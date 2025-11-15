@@ -1,6 +1,8 @@
 import './Footer.css';
 
 const Footer = () => {
+    const year = new Date().getFullYear();
+    
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -78,7 +80,7 @@ const Footer = () => {
           className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap order-2 md:order-3 text-center md:text-left"
           style={{ color: 'var(--text-secondary)' }}
         >
-          © 2024 HBR Analytics. All rights reserved.
+          © {year} HBR Analytics. All rights reserved.
         </p>
       </div>
     </footer>
