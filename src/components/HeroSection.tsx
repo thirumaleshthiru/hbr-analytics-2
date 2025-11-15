@@ -1,3 +1,4 @@
+import React from 'react';
 import './HeroSection.css';
 
 const HeroSection = () => {
@@ -85,7 +86,7 @@ const HeroSection = () => {
               <div className="w-full h-full group" style={{ transformStyle: 'preserve-3d' }}>
                 {/* Top Card: Revenue Growth */}
                 <div 
-                  className="absolute w-[90%] h-[58%] top-[5%] right-[2%] rounded-3xl hero-card shadow-2xl shadow-gray-400/30 animate-fade-in-up card-enter"
+                  className="absolute w-[90%] h-[58%] top-[5%] right-[2%] rounded-3xl hero-card shadow-2xl shadow-gray-400/30 border border-white/30 animate-fade-in-up card-enter"
                   style={{ transformStyle: 'preserve-3d', transform: 'rotateX(10deg) rotateY(-15deg) translateZ(80px)' }}
                 >
                   <div className="p-6 h-full flex flex-col">
@@ -115,12 +116,36 @@ const HeroSection = () => {
                           vectorEffect="non-scaling-stroke"
                         />
                         <g className="graph-dots animate-fade-in-up initially-hidden" style={{ animationDelay: '1.5s' }}>
-                          <circle className="stroke-2 stroke-white/80" cx="0" cy="85" fill="#005bff" r="4" />
-                          <circle className="stroke-2 stroke-white/80" cx="80" cy="50" fill="#005bff" r="4" />
-                          <circle className="stroke-2 stroke-white/80" cx="170" cy="30" fill="#005bff" r="4" />
+                          <circle 
+                            className="stroke-2 stroke-white/80 dark:stroke-white/30" 
+                            cx="0" 
+                            cy="85" 
+                            fill="#005bff" 
+                            r="4" 
+                          />
+                          <circle 
+                            className="stroke-2 stroke-white/80 dark:stroke-white/30" 
+                            cx="80" 
+                            cy="50" 
+                            fill="#005bff" 
+                            r="4" 
+                          />
+                          <circle 
+                            className="stroke-2 stroke-white/80 dark:stroke-white/30" 
+                            cx="170" 
+                            cy="30" 
+                            fill="#005bff" 
+                            r="4" 
+                          />
                         </g>
                         <g className="initially-hidden" style={{ animation: 'fade-in-up 0.8s ease-out 1.5s forwards' }}>
-                          <circle className="blue-dot-enhanced stroke-2 stroke-white/80" cx="200" cy="25" fill="#005bff" r="4" />
+                          <circle 
+                            className="blue-dot-enhanced stroke-2 stroke-white/80 dark:stroke-white/30" 
+                            cx="200" 
+                            cy="25" 
+                            fill="#005bff" 
+                            r="4" 
+                          />
                         </g>
                       </svg>
                     </div>
@@ -129,7 +154,7 @@ const HeroSection = () => {
 
                 {/* Bottom Card: Performance Bars */}
                 <div 
-                  className="absolute w-[85%] h-[58%] bottom-[0%] left-0 rounded-3xl hero-card shadow-2xl shadow-gray-400/30 animate-fade-in-up card-enter-delay"
+                  className="absolute w-[85%] h-[58%] bottom-[0%] left-0 rounded-3xl hero-card shadow-2xl shadow-gray-400/30 border border-white/30 animate-fade-in-up card-enter-delay"
                   style={{ transformStyle: 'preserve-3d', transform: 'rotateX(10deg) rotateY(-15deg) translateZ(50px)' }}
                 >
                   <div className="p-6 h-full flex flex-col">
@@ -139,19 +164,19 @@ const HeroSection = () => {
                       </h3>
                     </div>
                     <div className="flex-1 mt-4 relative flex items-end justify-between px-2 gap-2.5">
-                      <div className="bar bar-1 w-full h-[60%] bg-primary/40 rounded-t-md animate-grow-bar" />
-                      <div className="bar bar-2 w-full h-[85%] bg-primary/40 rounded-t-md animate-grow-bar" />
-                      <div className="bar bar-3 w-full h-full bg-primary rounded-t-md animate-grow-bar" />
-                      <div className="bar bar-4 w-full h-[70%] bg-primary/40 rounded-t-md animate-grow-bar" />
-                      <div className="bar bar-5 w-full h-[55%] bg-primary/40 rounded-t-md animate-grow-bar" />
-                      <div className="bar bar-6 w-full h-[90%] bg-primary/40 rounded-t-md animate-grow-bar" />
+                      <div className="bar bar-1 w-full h-[60%] bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/60 animate-grow-bar" />
+                      <div className="bar bar-2 w-full h-[85%] bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/60 animate-grow-bar" />
+                      <div className="bar bar-3 w-full h-full bg-primary rounded-t-md transition-all duration-300 hover:opacity-80 animate-grow-bar" />
+                      <div className="bar bar-4 w-full h-[70%] bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/60 animate-grow-bar" />
+                      <div className="bar bar-5 w-full h-[55%] bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/60 animate-grow-bar" />
+                      <div className="bar bar-6 w-full h-[90%] bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/60 animate-grow-bar" />
                     </div>
                   </div>
                 </div>
 
                 {/* Top Small Card: Real-time Growth */}
                 <div 
-                  className="absolute w-auto h-auto -top-[5%] left-[3%] p-3 rounded-2xl hero-card-small shadow-2xl shadow-gray-400/30 initially-hidden small-card-animated"
+                  className="absolute w-auto h-auto -top-[5%] left-[3%] p-3 rounded-2xl hero-card-small shadow-2xl shadow-gray-400/30 border border-white/30 initially-hidden small-card-animated"
                   style={{ transformStyle: 'preserve-3d', transform: 'rotateX(10deg) rotateY(-15deg) translateZ(120px) rotateZ(-3deg)', animationDelay: '1.8s' }}
                 >
                   <div className="flex items-center gap-3">
@@ -167,7 +192,7 @@ const HeroSection = () => {
 
                 {/* Bottom Small Card: Profit Margin */}
                 <div 
-                  className="absolute w-[220px] h-auto -bottom-[5%] left-[3%] p-3 pr-4 rounded-2xl hero-card-small shadow-2xl shadow-gray-400/30 initially-hidden small-card-animated"
+                  className="absolute w-[220px] h-auto -bottom-[5%] left-[3%] p-3 pr-4 rounded-2xl hero-card-small shadow-2xl shadow-gray-400/30 border border-white/30 initially-hidden small-card-animated"
                   style={{ transformStyle: 'preserve-3d', transform: 'rotateX(10deg) rotateY(-15deg) translateZ(120px)', animationDelay: '2.0s' }}
                 >
                   <div className="flex items-center gap-3">

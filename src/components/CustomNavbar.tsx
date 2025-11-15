@@ -35,9 +35,8 @@ const CustomNavbar = () => {
         onClick={closeMobileMenu}
       />
 
-      <header className="header" id="header" style={{
-        boxShadow: isScrolled ? '0 2px 8px rgba(0, 0, 0, 0.1)' : 'none',
-        borderBottom: 'none'
+<header className="header" id="header" style={{
+        boxShadow: isScrolled ? '0 2px 8px rgba(0, 0, 0, 0.1)' : 'none'
       }}>
         <div className="header-container">
           <Link to="/" className="logo-text" style={{ textDecoration: 'none' }}>

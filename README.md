@@ -62,6 +62,33 @@ Run the client: (From the /client directory)
 npm run start
 
 
+🚀 Deployment to Netlify
+
+This project is configured for easy deployment to Netlify.
+
+Automatic Deployment:
+
+1. Push your code to GitHub/GitLab/Bitbucket
+2. Connect your repository to Netlify
+3. Netlify will automatically detect the build settings from `netlify.toml`
+
+Manual Deployment:
+
+1. Build the project:
+   ```bash
+   npm run build
+   ```
+
+2. Deploy the `dist` folder to Netlify
+
+Build Settings (already configured in netlify.toml):
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Node version: 18
+
+The `_redirects` file ensures all routes work correctly with React Router in production.
+
+
 🤝 Contributing
 
 Contributions are welcome! Please fork the repository and open a pull request.

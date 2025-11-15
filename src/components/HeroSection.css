@@ -1,5 +1,4 @@
 /* Hero Section Styles - Light Mode Only */
-
 .hero-title {
   color: #0f172a;
   transition: color 0.3s ease;
@@ -8,6 +7,10 @@
 .hero-description {
   color: #475569;
   transition: color 0.3s ease;
+}
+
+.graph-grid-lines {
+  stroke: #E2E8F0;
 }
 
 .animated-background-line {
@@ -76,6 +79,12 @@
 
 .blue-dot-enhanced {
   animation: dot-push-pull 2s infinite, dot-glow-enhanced 2s infinite;
+}
+
+/* Dark mode support for dots */
+[data-theme="dark"] .graph-dots circle,
+[data-theme="dark"] .blue-dot-enhanced {
+  fill: #13a4ec !important;
 }
 
 .small-card-animated {
@@ -176,6 +185,17 @@
   }
 }
 
+@keyframes grid-pulse {
+  0%, 100% {
+    stroke-opacity: 0.3;
+    stroke-width: 0.75;
+  }
+  50% {
+    stroke-opacity: 1;
+    stroke-width: 1.5;
+  }
+}
+
 @keyframes particle-float {
   0%, 100% {
     transform: translateY(0) translateX(0);
@@ -266,4 +286,3 @@
     order: 1;
   }
 }
-
