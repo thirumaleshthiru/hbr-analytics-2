@@ -1,0 +1,22 @@
+/* Footer Styles */
+.footer {
+  width: 100%;
+  background: var(--bg-color);
+  border-top: 1px solid var(--card-border);
+}
+
+.footer a {
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--accent-color) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 24px 16px;
+  }
+}
+

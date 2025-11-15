@@ -3,7 +3,7 @@ import './HeroSection.css';
 
 const HeroSection = () => {
   return (
-    <>
+    <section id="home">
       {/* Background Effects */}
       <div className="absolute inset-0 z-0">
         <div 
@@ -212,7 +212,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
