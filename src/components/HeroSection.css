@@ -48,6 +48,18 @@
 }
 
 @keyframes pulse-indicator {
+  0% {
+    box-shadow: 0 0 0 0 rgba(4, 187, 103, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(4, 187, 103, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(4, 187, 103, 0);
+  }
+}
+
+@keyframes pulse-ball {
   0%, 100% {
     transform: scale(1);
     opacity: 1;
@@ -64,6 +76,29 @@
 
 .animate-indicator-pulse {
   animation: pulse-indicator 2s ease-in-out infinite;
+}
+
+.animate-ball-pulse {
+  animation: pulse-ball 2s ease-in-out infinite;
+}
+
+.initially-hidden {
+  opacity: 0;
+}
+
+.small-card-animated {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive */
@@ -86,3 +121,4 @@
     order: 2;
   }
 }
+

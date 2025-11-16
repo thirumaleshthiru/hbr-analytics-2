@@ -1,4 +1,3 @@
- 
 import './HeroSection.css';
 
 const HeroSection = () => {
@@ -13,7 +12,7 @@ const HeroSection = () => {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="3129671-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+          <source src="background-video.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -48,6 +47,7 @@ const HeroSection = () => {
           <div className="relative h-[450px] w-full lg:h-[550px] hero-graph-content">
             <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: '1500px' }}>
               <div className="w-full h-full group" style={{ transformStyle: 'preserve-3d' }}>
+                
                 {/* Top Card: Revenue Growth */}
                 <div 
                   className="absolute w-[85%] h-[55%] top-[5%] right-0 rounded-2xl bg-white backdrop-blur-xl shadow-2xl shadow-gray-900/40 border border-white/30"
@@ -58,9 +58,9 @@ const HeroSection = () => {
                       <h3 className="font-bold text-lg text-slate-800">
                         Revenue Growth
                       </h3>
-                      <div className="flex items-center gap-1 text-green-500">
-                        <span className="material-symbols-outlined text-xl">arrow_upward</span>
-                        <span className="font-semibold">12.4%</span>
+                      <div className="inline-flex items-center gap-1.5 py-1 px-3 rounded-full bg-green-500/10 text-green-600 animate-indicator-pulse">
+                        <span className="material-symbols-outlined text-base">arrow_upward</span>
+                        <span className="font-semibold text-sm">12.4%</span>
                       </div>
                     </div>
                     <div className="flex-1 mt-4 relative">
@@ -126,14 +126,31 @@ const HeroSection = () => {
                           r="2.5"
                           style={{ animation: 'fade-in 0.5s 1.6s forwards' }}
                         />
-                        <g className="animate-indicator-pulse">
+                        <g className="animate-ball-pulse">
                           <circle cx="200" cy="25" fill="#005bff" r="5" />
                           <circle cx="200" cy="25" fill="#005bff" fillOpacity="0.3" r="8" />
                         </g>
                       </svg>
                     </div>
                   </div>
+
+                  {/* Real-time Growth Small Card - Inside Revenue Growth, Top Left */}
+                  <div 
+                    className="absolute w-auto h-auto -top-[20%] -left-[10%] p-3 rounded-2xl bg-white backdrop-blur-xl shadow-2xl shadow-gray-900/40 border border-white/30 initially-hidden small-card-animated hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                    style={{ transformStyle: 'preserve-3d', transform: 'rotateZ(-3deg)', animationDelay: '1.8s' }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-green-100">
+                        <div className="absolute size-3 rounded-full bg-green-500 animate-pulse"></div>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium text-slate-500">Real-time Growth</span>
+                        <span className="text-lg font-bold text-slate-800">+2.1%</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+ 
 
                 {/* Bottom Card: Performance Bars */}
                 <div 
@@ -159,6 +176,22 @@ const HeroSection = () => {
                       <div className="w-full h-[90%] bg-primary/20 rounded-t-md transition-all duration-300 hover:bg-primary/40" />
                       <div className="w-full h-[75%] bg-primary/20 rounded-t-md transition-all duration-300 hover:bg-primary/40" />
                       <div className="w-full h-[65%] bg-primary/20 rounded-t-md transition-all duration-300 hover:bg-primary/40" />
+                    </div>
+                  </div>
+
+                  {/* Profit Margin Small Card - Inside Performance, Bottom Left */}
+                  <div 
+                    className="absolute w-auto h-auto -bottom-[15%] md:-left-[5%] -left-[1%] p-3 pr-4 rounded-2xl bg-white backdrop-blur-xl shadow-2xl shadow-gray-900/40 border border-white/30 initially-hidden small-card-animated transition-all duration-300"
+                    style={{ transformStyle: 'preserve-3d', animationDelay: '2.0s' }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="flex size-10 items-center justify-center rounded-xl bg-green-100">
+                        <span className="material-symbols-outlined text-2xl font-semibold text-green-600 animate-pulse" style={{ animationDuration: '1.5s' }}>trending_up</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium text-slate-500">Profit Margin</span>
+                        <span className="text-lg font-bold text-slate-800">24.8%</span>
+                      </div>
                     </div>
                   </div>
                 </div>
