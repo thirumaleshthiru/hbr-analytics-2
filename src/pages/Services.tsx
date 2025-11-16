@@ -1,7 +1,7 @@
  
 function Services() {
   return (
-    <div>Services</div>
+    <div className="flex flex-col items-center justify-center min-h-screen">Services</div>
   )
 }
 

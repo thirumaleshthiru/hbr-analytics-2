@@ -2,7 +2,7 @@
 
 function Industries() {
   return (
-    <div>Industries</div>
+    <div className="flex flex-col items-center justify-center min-h-screen">Industries</div>
   )
 }
 

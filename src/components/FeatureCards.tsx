@@ -7,7 +7,7 @@ const FeatureCards = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {/* Card 1: Data-Driven Insights with animated dots */}
           <div 
-            className="group relative flex flex-col rounded-2xl bg-white/60 dark:bg-slate-800/50 p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-slate-200/50 dark:border-slate-700/50"
+            className="group relative flex flex-col rounded-2xl bg-white/60 p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-slate-200/50"
             style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
           >
             <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
@@ -119,7 +119,7 @@ const FeatureCards = () => {
 
           {/* Card 3: Real-Time Analytics */}
           <div 
-            className="group relative flex flex-col overflow-hidden rounded-2xl bg-white/60 dark:bg-slate-800/50 p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-slate-200/50 dark:border-slate-700/50"
+            className="group relative flex flex-col overflow-hidden rounded-2xl bg-white/60 p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-slate-200/50"
             style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
           >
             <div 
@@ -135,7 +135,7 @@ const FeatureCards = () => {
               </p>
               <div className="relative mt-8 h-48">
                 <div 
-                  className="absolute left-4 top-2 flex items-center gap-3 rounded-xl bg-white dark:bg-slate-900 px-4 py-3 shadow-lg transition-transform duration-300 hover:scale-105 border border-slate-200/50 dark:border-slate-700/50 animate-fade-in-up"
+                  className="absolute left-4 top-2 flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg transition-transform duration-300 hover:scale-105 border border-slate-200/50 animate-fade-in-up"
                   style={{ animationDelay: '0.5s' }}
                 >
                   <span className="material-symbols-outlined text-blue-600 text-2xl">trending_up</span>
@@ -149,7 +149,7 @@ const FeatureCards = () => {
                   </div>
                 </div>
                 <div 
-                  className="absolute bottom-4 right-4 flex items-center gap-3 rounded-xl bg-white dark:bg-slate-900 px-4 py-3 shadow-lg transition-transform duration-300 hover:scale-105 border border-slate-200/50 dark:border-slate-700/50 animate-fade-in-up"
+                  className="absolute bottom-4 right-4 flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg transition-transform duration-300 hover:scale-105 border border-slate-200/50 animate-fade-in-up"
                   style={{ animationDelay: '0.7s' }}
                 >
                   <span className="material-symbols-outlined text-blue-600 text-2xl">speed</span>

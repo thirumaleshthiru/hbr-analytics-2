@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SAP Analytics - Unlock Real-Time Insights</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#005bff",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0f1623",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    keyframes: {
+                        "animate-stroke": {
+                            '0%': { strokeDashoffset: '2000' },
+                            '100%': { strokeDashoffset: '0' }
+                        },
+                        "pulse-indicator": {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                            '50%': { transform: 'scale(1.2)', opacity: '0.7' }
+                        },
+                        "draw-line": {
+                            '0%': { 'stroke-dashoffset': '1000' },
+                            '100%': { 'stroke-dashoffset': '0' }
+                        }
+                    },
+                    animation: {
+                        'stroke-draw': 'animate-stroke 15s linear infinite',
+                        'indicator-pulse': 'pulse-indicator 2s ease-in-out infinite',
+                        'line-draw': 'draw-line 2s ease-out forwards'
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .animated-background-line {
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+        }
+
+        .animated-graph-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation-fill-mode: forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#1C2D3F] dark:text-gray-200">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-20">
+                <div class="mx-auto flex max-w-7xl flex-col">
+                    <header
+                        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200/80 dark:border-gray-700/50 py-4">
+                        <div class="flex items-center gap-4 text-[#1C2D3F] dark:text-white">
+                            <div class="size-6">
+                                <svg class="text-primary" fill="none" viewBox="0 0 48 48"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
+                                        fill="currentColor" fill-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-xl font-bold tracking-tight text-[#1C2D3F] dark:text-white">SAP</h2>
+                        </div>
+                        <div class="hidden items-center gap-8 lg:flex">
+                            <a class="text-sm font-medium text-[#1C2D3F] hover:text-primary dark:text-gray-300 dark:hover:text-primary"
+                                href="#">Solutions</a>
+                            <a class="text-sm font-medium text-[#1C2D3F] hover:text-primary dark:text-gray-300 dark:hover:text-primary"
+                                href="#">Platform</a>
+                            <a class="text-sm font-medium text-[#1C2D3F] hover:text-primary dark:text-gray-300 dark:hover:text-primary"
+                                href="#">Resources</a>
+                            <a class="text-sm font-medium text-[#1C2D3F] hover:text-primary dark:text-gray-300 dark:hover:text-primary"
+                                href="#">About Us</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button
+                                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-sm font-bold leading-normal text-[#1C2D3F] hover:bg-gray-200/50 dark:text-gray-300 dark:hover:bg-gray-700/50">
+                                <span class="truncate">Contact Sales</span>
+                            </button>
+                            <button
+                                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-sm hover:opacity-90">
+                                <span class="truncate">Sign In</span>
+                            </button>
+                            <button class="lg:hidden p-2 rounded-lg hover:bg-gray-200/50 dark:hover:bg-gray-700/50">
+                                <span class="material-symbols-outlined text-[#1C2D3F] dark:text-gray-300">menu</span>
+                            </button>
+                        </div>
+                    </header>
+                </div>
+            </div>
+            <main class="flex-1">
+                <div class="relative w-full overflow-hidden">
+                    <div class="absolute inset-0 z-0">
+                        <svg class="w-full h-full text-gray-200/80 dark:text-gray-800/50" fill="none"
+                            preserveAspectRatio="none" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+                            <path class="animated-background-line animate-stroke-draw"
+                                d="M-100 250 Q150 100 400 300 T800 200 L1100 250" opacity="0.7" stroke="currentColor"
+                                stroke-width="1.5" style="animation-delay: -2.5s;"></path>
+                            <path class="animated-background-line animate-stroke-draw"
+                                d="M-100 450 Q200 600 500 400 T900 450 L1100 420" opacity="0.7" stroke="currentColor"
+                                stroke-width="1.5" style="animation-delay: -5s;"></path>
+                            <path class="animated-background-line animate-stroke-draw"
+                                d="M-100 150 Q250 250 500 100 T1100 200" opacity="0.7" stroke="currentColor"
+                                stroke-width="1.5" style="animation-delay: -7.5s;"></path>
+                            <path class="animated-background-line animate-stroke-draw"
+                                d="M-100 350 Q200 300 450 450 T950 300 L1100 320" opacity="0.7" stroke="currentColor"
+                                stroke-width="1.5" style="animation-delay: -10s;"></path>
+                        </svg>
+                    </div>
+                    <div
+                        class="absolute -top-1/4 -left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl opacity-50 dark:opacity-30">
+                    </div>
+                    <div
+                        class="absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl opacity-50 dark:opacity-30">
+                    </div>
+                    <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-20 py-16 sm:py-24 lg:py-32">
+                        <div class="mx-auto grid max-w-7xl grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-16 items-center">
+                            <div class="flex flex-col gap-8 text-center lg:text-left z-10">
+                                <div class="flex flex-col gap-4">
+                                    <h1
+                                        class="text-4xl font-black leading-tight tracking-tighter text-[#1C2D3F] dark:text-white md:text-5xl lg:text-6xl">
+                                        Unlock Real-Time Insights. Drive Smarter Decisions.
+                                    </h1>
+                                    <p class="text-base text-[#6A7E91] dark:text-gray-400 md:text-lg">
+                                        Harness the power of business intelligence, predictive analytics, and enterprise
+                                        planning in one unified solution.
+                                    </p>
+                                </div>
+                                <div
+                                    class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+                                    <button
+                                        class="flex w-full sm:w-auto min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-wide shadow-lg shadow-primary/30 hover:opacity-90">
+                                        <span class="truncate">Request a Demo</span>
+                                    </button>
+                                    <button
+                                        class="group flex w-full sm:w-auto min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-transparent text-base font-bold leading-normal text-[#1C2D3F] hover:bg-gray-200/50 dark:text-gray-300 dark:hover:bg-gray-700/50">
+                                        <span class="truncate">Explore the Platform</span>
+                                        <span
+                                            class="material-symbols-outlined ml-2 transition-transform group-hover:translate-x-1">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="relative h-[450px] w-full lg:h-[550px]">
+                                <div class="absolute inset-0 flex items-center justify-center"
+                                    style="perspective: 1500px;">
+                                    <div class="w-full h-full group" style="transform-style: preserve-3d;">
+                                        <div class="absolute w-[85%] h-[55%] top-[5%] right-0 rounded-2xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl shadow-2xl shadow-gray-400/30 dark:shadow-black/40 transition-transform duration-500 ease-out group-hover:rotate-y-[-5deg] group-hover:rotate-x-2 group-hover:-translate-y-2 border border-white/30 dark:border-slate-800/50"
+                                            style="transform-style: preserve-3d; transform: rotateX(10deg) rotateY(-15deg) translateZ(-20px);">
+                                            <div class="p-6 h-full flex flex-col">
+                                                <div class="flex items-center justify-between">
+                                                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">
+                                                        Revenue Growth</h3>
+                                                    <div class="flex items-center gap-1 text-green-500">
+                                                        <span
+                                                            class="material-symbols-outlined text-xl">arrow_upward</span>
+                                                        <span class="font-semibold">12.4%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-1 mt-4 relative">
+                                                    <svg class="w-full h-full overflow-visible" fill="none"
+                                                        preserveAspectRatio="none" viewBox="0 0 200 100">
+                                                        <defs>
+                                                            <linearGradient id="lineGradient" x1="0%" x2="100%" y1="0%"
+                                                                y2="0%">
+                                                                <stop offset="0%" stop-color="#005bff" stop-opacity="0">
+                                                                </stop>
+                                                                <stop offset="100%" stop-color="#005bff"></stop>
+                                                            </linearGradient>
+                                                        </defs>
+                                                        <path class="dark:stroke-slate-700" d="M0 20 H200"
+                                                            stroke="#E2E8F0" stroke-dasharray="2 2" stroke-width="0.5">
+                                                        </path>
+                                                        <path class="dark:stroke-slate-700" d="M0 40 H200"
+                                                            stroke="#E2E8F0" stroke-dasharray="2 2" stroke-width="0.5">
+                                                        </path>
+                                                        <path class="dark:stroke-slate-700" d="M0 60 H200"
+                                                            stroke="#E2E8F0" stroke-dasharray="2 2" stroke-width="0.5">
+                                                        </path>
+                                                        <path class="dark:stroke-slate-700" d="M0 80 H200"
+                                                            stroke="#E2E8F0" stroke-dasharray="2 2" stroke-width="0.5">
+                                                        </path>
+                                                        <path class="animated-graph-line animate-line-draw"
+                                                            d="M 0 85 C 30 95, 40 30, 80 50 S 140 0, 170 30 S 190 20, 200 25"
+                                                            stroke="url(#lineGradient)" stroke-width="2.5"
+                                                            vector-effect="non-scaling-stroke"></path>
+                                                        <circle class="opacity-0 animate-fade-in" cx="0" cy="85"
+                                                            fill="#005bff" r="2.5"
+                                                            style="animation: fade-in 0.5s 0.2s forwards;"></circle>
+                                                        <circle class="opacity-0 animate-fade-in" cx="80" cy="50"
+                                                            fill="#005bff" r="2.5"
+                                                            style="animation: fade-in 0.5s 0.8s forwards;"></circle>
+                                                        <circle class="opacity-0 animate-fade-in" cx="170" cy="30"
+                                                            fill="#005bff" r="2.5"
+                                                            style="animation: fade-in 0.5s 1.6s forwards;"></circle>
+                                                        <circle class="opacity-0 animate-fade-in" cx="200" cy="25"
+                                                            fill="#005bff" r="2.5"
+                                                            style="animation: fade-in 0.5s 2s forwards;"></circle>
+                                                        <g class="animate-indicator-pulse">
+                                                            <circle cx="200" cy="25" fill="#10B981" r="5"></circle>
+                                                            <circle cx="200" cy="25" fill="#10B981" fill-opacity="0.3"
+                                                                r="8"></circle>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="absolute w-full h-[55%] bottom-0 left-0 rounded-2xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl shadow-2xl shadow-gray-400/30 dark:shadow-black/40 transition-transform duration-500 ease-out group-hover:rotate-y-[-5deg] group-hover:rotate-x-2 group-hover:translate-y-2 group-hover:translate-x-2 border border-white/30 dark:border-slate-800/50"
+                                            style="transform-style: preserve-3d; transform: rotateX(10deg) rotateY(-15deg) translateZ(50px);">
+                                            <div class="p-6 h-full flex flex-col">
+                                                <div class="flex items-center justify-between">
+                                                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">
+                                                        Performance</h3>
+                                                    <select
+                                                        class="bg-transparent text-sm text-slate-500 dark:text-slate-400 border-none focus:ring-0 p-0">
+                                                        <option>This Quarter</option>
+                                                        <option>Last Quarter</option>
+                                                    </select>
+                                                </div>
+                                                <div
+                                                    class="flex-1 mt-4 relative flex items-end justify-between px-2 gap-2">
+                                                    <div
+                                                        class="w-full h-[60%] bg-primary/20 dark:bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/40 dark:hover:bg-primary/60">
+                                                    </div>
+                                                    <div
+                                                        class="w-full h-[85%] bg-primary/20 dark:bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/40 dark:hover:bg-primary/60">
+                                                    </div>
+                                                    <div
+                                                        class="w-full h-full bg-primary rounded-t-md transition-all duration-300 hover:opacity-80">
+                                                    </div>
+                                                    <div
+                                                        class="w-full h-[70%] bg-primary/20 dark:bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/40 dark:hover:bg-primary/60">
+                                                    </div>
+                                                    <div
+                                                        class="w-full h-[55%] bg-primary/20 dark:bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/40 dark:hover:bg-primary/60">
+                                                    </div>
+                                                    <div
+                                                        class="w-full h-[90%] bg-primary/20 dark:bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/40 dark:hover:bg-primary/60">
+                                                    </div>
+                                                    <div
+                                                        class="w-full h-[75%] bg-primary/20 dark:bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/40 dark:hover:bg-primary/60">
+                                                    </div>
+                                                    <div
+                                                        class="w-full h-[65%] bg-primary/20 dark:bg-primary/40 rounded-t-md transition-all duration-300 hover:bg-primary/40 dark:hover:bg-primary/60">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
