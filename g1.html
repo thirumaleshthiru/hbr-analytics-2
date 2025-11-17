@@ -1,0 +1,2490 @@
+
+<!DOCTYPE html>
+<!-- MODIFICATION: Removed class="light" -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>HBR Analytics - Unlock Real-Time Insights</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            // MODIFICATION: Removed darkMode: "class"
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#005bff",
+                        "background-light": "#f8fafc", // Use this as the main bg
+                        "background-dark": "#0f1623", // No longer used
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    keyframes: {
+                        "background-scroll": {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-1000px)' }
+                        },
+                        "animate-stroke": {
+                            '0%': { strokeDashoffset: '2000' },
+                            '100%': { strokeDashoffset: '0' }
+                        },
+                        "particle-float": {
+                            '0%, 100%': { transform: 'translateY(0) translateX(0)', opacity: '0.1' },
+                            '25%': { transform: 'translateY(-20px) translateX(15px)', opacity: '0.5' },
+                            '50%': { transform: 'translateY(10px) translateX(-10px)', opacity: '0.2' },
+                            '75%': { transform: 'translateY(-15px) translateX(20px)', opacity: '0.6' }
+                        },
+                        "draw-line": {
+                            '0%': { strokeDashoffset: '1000' },
+                            '100%': { strokeDashoffset: '0' }
+                        },
+                        "pulse-indicator": {
+                            '0%': { boxShadow: '0 0 0 0 rgba(4, 187, 103, 0.7)' },
+                            '70%': { boxShadow: '0 0 0 10px rgba(4, 187, 103, 0)' },
+                            '100%': { boxShadow: '0 0 0 0 rgba(4, 187, 103, 0)' }
+                        },
+                        "fade-in-up": {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        "fade-in-up-spring": {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '80%': { opacity: '1', transform: 'translateY(-5px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        "grow-bar": {
+                            '0%': { transform: 'scaleY(0)' },
+                            '100%': { transform: 'scaleY(1)' }
+                        },
+                        "dot-push-pull": {
+                            '0%, 100%': {
+                                transform: 'scale(1) translateX(0) translateY(0)',
+                                boxShadow: '0 0 0 0px rgba(0, 91, 255, 0.5)'
+                            },
+                            '25%': {
+                                transform: 'scale(1.3) translateX(3px) translateY(-2px)',
+                                boxShadow: '0 0 0 6px rgba(0, 91, 255, 0.3)'
+                            },
+                            '50%': {
+                                transform: 'scale(1.1) translateX(-2px) translateY(-4px)',
+                                boxShadow: '0 0 0 12px rgba(0, 91, 255, 0.2)'
+                            },
+                            '75%': {
+                                transform: 'scale(1.2) translateX(2px) translateY(-1px)',
+                                boxShadow: '0 0 0 8px rgba(0, 91, 255, 0.4)'
+                            }
+                        },
+                        "dot-glow-enhanced": {
+                            '0%, 100%': {
+                                filter: 'brightness(1) drop-shadow(0 0 2px #005bff)'
+                            },
+                            '50%': {
+                                filter: 'brightness(1.8) drop-shadow(0 0 8px #005bff)'
+                            }
+                        },
+                        "pulse": {
+                            "0%, 100%": { "opacity": "1", "transform": "scale(1)" },
+                            "50%": { "opacity": "0.5", "transform": "scale(1.2)" }
+                        },
+                        "scroll-left": {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        "scroll-right": {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0)' }
+                        },
+                        "drift": {
+                            '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+                            '25%': { transform: 'translate(var(--tx1), var(--ty1)) rotate(var(--r1))' },
+                            '50%': { transform: 'translate(var(--tx2), var(--ty2)) rotate(var(--r2))' },
+                            '75%': { transform: 'translate(var(--tx3), var(--ty3)) rotate(var(--r3))' },
+                            '100%': { transform: 'translate(0, 0) rotate(0deg)' }
+                        }
+                    },
+                    animation: {
+                        'bg-scroll': 'background-scroll 40s linear infinite',
+                        'stroke-draw': 'animate-stroke 15s linear infinite',
+                        'particle-float': 'particle-float 15s ease-in-out infinite',
+                        'line-draw': 'draw-line 2s ease-out 0.5s forwards',
+                        'indicator-pulse': 'pulse-indicator 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+                        'fade-in-up-spring': 'fade-in-up-spring 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+                        'grow-bar': 'grow-bar 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+                        'dot-push-pull': 'dot-push-pull 2s ease-in-out infinite',
+                        'dot-glow-enhanced': 'dot-glow-enhanced 2s ease-in-out infinite',
+                        'pulse': 'pulse 2s infinite',
+                        'scroll-left': 'scroll-left 40s linear infinite',
+                        'scroll-right': 'scroll-right 40s linear infinite',
+                        'drift': 'drift 60s ease-in-out infinite'
+                    }
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Base styles from g4.html, simplified for light-mode only */
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg-1: #ffffff;
+            --card-bg-2: #f8fafc;
+            --card-border: #e2e8f0;
+            --card-shadow: rgba(15, 23, 42, 0.08);
+            --card-shadow-hover: rgba(15, 23, 42, 0.15);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-desc: #64748b;
+            --accent-color: #005bff;
+            --accent-color-dark: #0047cc;
+            --accent-color-glow: rgba(0, 91, 255, 0.15);
+            --accent-color-scan: rgba(0, 91, 255, 0.6);
+            --accent-color-grid: rgba(0, 91, 255, 0.1);
+            --icon-core-1: #f8fafc;
+            --icon-core-2: #ffffff;
+            --card-visual-bg-1: #f8fafc;
+            --card-visual-bg-2: #f1f5f9;
+        }
+
+        /* MODIFICATION: Removed all [data-theme="dark"] rules */
+
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .hero-title {
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .animated-background-line {
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+            animation: stroke-draw 3s ease-out forwards;
+            /* MODIFICATION: Swapped to g21.html style */
+            stroke: #E2E8F0;
+            opacity: 0.3;
+            stroke-width: 1.5;
+        }
+
+        .graph-grid-lines {
+            stroke: #E2E8F0;
+        }
+
+        .graph-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
+
+        .card-enter {
+            animation-delay: 0.2s;
+            animation-fill-mode: backwards;
+        }
+
+        .card-enter-delay {
+            animation-delay: 0.4s;
+            animation-fill-mode: backwards;
+        }
+
+        .bar {
+            transform-origin: bottom;
+        }
+
+        .bar-1 {
+            animation-delay: 0.8s;
+        }
+
+        .bar-2 {
+            animation-delay: 0.9s;
+        }
+
+        .bar-3 {
+            animation-delay: 1.0s;
+        }
+
+        .bar-4 {
+            animation-delay: 1.1s;
+        }
+
+        .bar-5 {
+            animation-delay: 1.2s;
+        }
+
+        .bar-6 {
+            animation-delay: 1.3s;
+        }
+
+        .bar-7 {
+            animation-delay: 1.4s;
+        }
+
+        .bar-8 {
+            animation-delay: 1.5s;
+        }
+
+        .graph-dots {
+            opacity: 0;
+        }
+
+        .initially-hidden {
+            opacity: 0;
+        }
+
+        .blue-dot-enhanced {
+            animation: dot-push-pull 2s infinite, dot-glow-enhanced 2s infinite;
+        }
+
+        .small-card-animated {
+            animation: fade-in-up 0.8s ease-out forwards;
+        }
+
+        .animated-dot {
+            animation: pulse 2s infinite;
+        }
+
+        .animated-dot-delay-1 {
+            animation-delay: 0.5s;
+        }
+
+        .animated-dot-delay-2 {
+            animation-delay: 1s;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            /* MODIFICATION: Start fully transparent */
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+            padding: 16px 0;
+        }
+
+        /* Style for header when scrolled (applied by JS) */
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Text/icon color changes on scroll (light mode) */
+        .header.scrolled .logo-text,
+        .header.scrolled .nav-link,
+        .header.scrolled .theme-toggle span {
+            color: var(--text-primary);
+        }
+
+        .header.scrolled .hamburger span {
+            background: var(--text-primary);
+        }
+
+        .header.scrolled .theme-toggle {
+            border-color: var(--card-border);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            /* MODIFICATION: Make logo white to show on video */
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            /* MODIFICATION: Make hamburger lines white */
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .nav-link {
+            /* MODIFICATION: Make nav links white */
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color, #005bff);
+        }
+
+        /* MODIFICATION: Removed theme-toggle */
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            background: rgba(0, 0, 0, 0.5);
+            /* Added overlay for mobile */
+        }
+
+        /* Services Section Styles */
+        .services-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            /* MODIFICATION: Adjusted padding */
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .services-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .services-content-left {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .services-content-right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .services-label {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            display: inline-block;
+        }
+
+        .services-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-primary) !important;
+            letter-spacing: -0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .services-description {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .services-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            position: relative;
+            background: linear-gradient(180deg, var(--card-bg-1) 0%, var(--card-bg-2) 100%);
+            border-radius: 25px;
+            padding: 28px;
+            overflow: hidden;
+            box-shadow: 0 4px 33px var(--card-shadow);
+            border: 1px solid var(--card-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px var(--card-shadow-hover);
+        }
+
+        .card-visual {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--card-visual-bg-1) 0%, var(--card-visual-bg-2) 50%, var(--accent-color-light) 100%);
+            border: 1px solid var(--card-border);
+            transition: background 0.3s ease;
+        }
+
+        .animation-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .icon-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+        }
+
+        .central-icon {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-core {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--icon-core-1) 0%, var(--icon-core-2) 100%);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+
+        .icon-svg,
+        .icon-core i {
+            width: 32px;
+            height: 32px;
+            fill: var(--accent-color);
+            color: var(--accent-color);
+            font-size: 32px;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-color-glow) 0%, transparent 70%);
+            filter: blur(20px);
+            animation: orb-float 6s ease-in-out infinite;
+        }
+
+        @keyframes orb-float {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color-scan), transparent);
+            animation: scan-move 4s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        @keyframes scan-move {
+
+            0%,
+            100% {
+                top: 0;
+            }
+
+            50% {
+                top: 100%;
+            }
+        }
+
+        .data-bars {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+            z-index: 5;
+        }
+
+        .data-bars .bar {
+            width: 12px;
+            height: var(--base-height, 40px);
+            background: linear-gradient(180deg, var(--accent-color) 0%, var(--accent-color-dark) 100%);
+            border-radius: 4px;
+            animation: bar-pulse 3s ease-in-out infinite;
+        }
+
+        .data-bars .bar:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .data-bars .bar:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .data-bars .bar:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .data-bars .bar:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .data-bars .bar:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .data-bars .bar:nth-child(6) {
+            animation-delay: 1s;
+        }
+
+        @keyframes bar-pulse {
+
+            0%,
+            100% {
+                transform: scaleY(0.6);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scaleY(1.5);
+                opacity: 1;
+            }
+        }
+
+        .wave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            opacity: 0;
+            animation: wave-pulse 3s ease-out infinite;
+        }
+
+        .wave-1 {
+            animation-delay: 0s;
+        }
+
+        .wave-2 {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes wave-pulse {
+            0% {
+                width: 100px;
+                height: 100px;
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particle-float 5s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) {
+            top: 20%;
+            left: 30%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            top: 40%;
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(3) {
+            top: 70%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(4) {
+            top: 60%;
+            left: 80%;
+            animation-delay: 3s;
+        }
+
+        @keyframes draw-line {
+            from {
+                stroke-dashoffset: 1000;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .animated-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-line 2s ease-out 0.5s forwards;
+        }
+
+        .animated-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(0deg, var(--accent-color-grid) 0px, var(--accent-color-grid) 1px, transparent 1px, transparent 30px),
+                repeating-linear-gradient(90deg, var(--accent-color-grid) 0px, var(--accent-color-grid) 1px, transparent 1px, transparent 30px);
+            opacity: 0.4;
+            animation: grid-slide 20s linear infinite;
+        }
+
+        @keyframes grid-slide {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(30px, 30px);
+            }
+        }
+
+        .orbit-trail {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            border: 1px dashed var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: orbit-rotate 15s linear infinite;
+        }
+
+        @keyframes orbit-rotate {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .orbit-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            animation: orbit-move-3 15s linear infinite;
+        }
+
+        @keyframes orbit-move-3 {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) translateX(70px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) translateX(70px) rotate(-360deg);
+            }
+        }
+
+        .orbit-icon .central-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .orbit-icon .icon-core {
+            width: 30px;
+            height: 30px;
+        }
+
+        .orbit-icon .icon-svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .card-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-desc);
+        }
+
+        /* Solutions Section */
+        .solutions-section {
+            padding: 80px 40px;
+            background: var(--bg-color);
+            position: relative;
+        }
+
+        .solutions-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .solutions-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .solutions-header h2 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .solutions-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .solution-card {
+            background: var(--card-bg-1);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 33px var(--card-shadow);
+        }
+
+        .solution-card:hover {
+            background: var(--card-bg-2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--card-shadow-hover);
+            border-color: var(--accent-color);
+        }
+
+        .solution-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(0, 91, 255, 0.1) 0%, rgba(19, 164, 236, 0.1) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .solution-icon i {
+            font-size: 32px;
+            color: var(--accent-color);
+        }
+
+        .solution-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .solution-card p {
+            font-size: 16px;
+            color: var(--text-desc);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .solution-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solution-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .solution-features li i {
+            color: var(--accent-color);
+            font-size: 12px;
+        }
+
+        /* Why Choose Us Section - MODIFICATION: Re-added blue background */
+        .why-choose-section {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            background: linear-gradient(to bottom right, #2563EB, #1E40AF);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-badge {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            /* MODIFICATION: White text on blue bg */
+            color: #ffffff;
+            margin-bottom: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-badge i {
+            /* MODIFICATION: White text on blue bg */
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .section-badge span {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            /* MODIFICATION: White text on blue bg */
+            color: #ffffff;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            /* MODIFICATION: White text on blue bg */
+            color: #ffffff !important;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            font-size: 18px;
+            /* MODIFICATION: White text on blue bg */
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        .why-choose-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .why-card {
+            /* MODIFICATION: Glass card style for blue bg */
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 36px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .why-icon {
+            /* MODIFICATION: Glass icon style */
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-icon i {
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        .why-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-features {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+            padding: 0;
+        }
+
+        .why-features li {
+            padding: 6px 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .why-features li i {
+            color: #ffffff;
+            font-size: 12px;
+        }
+
+        /* Call to Action Section - MODIFICATION: Re-added blue background */
+        .cta-section {
+            padding-top: 80px;
+            padding-bottom: 80px;
+            background: linear-gradient(to bottom right, #2563EB, #1E40AF);
+            position: relative;
+        }
+
+        .cta-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            text-align: center;
+        }
+
+        .cta-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 900px;
+        }
+
+        .cta-title {
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .cta-description {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-width: 84px;
+            max-width: 480px;
+            padding: 14px 28px;
+            background: #ffffff;
+            color: #005bff;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .cta-button .material-symbols-outlined {
+            font-size: 20px;
+        }
+
+
+        /* Industries Section - MODIFICATION: Styling for light cards */
+        .industries-section {
+            background: var(--bg-color);
+            padding: 80px 0;
+            /* MODIFICATION: Added vertical padding */
+        }
+
+        .industries-scroll-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+        }
+
+        .industries-row {
+            display: flex;
+            gap: 12px;
+            padding: 8px 0;
+            width: max-content;
+            will-change: transform;
+        }
+
+        .industries-row.row-1 {
+            animation: scroll-left 40s linear infinite;
+        }
+
+        .industries-row.row-2 {
+            animation: scroll-right 40s linear infinite;
+        }
+
+        .industries-row:hover {
+            animation-play-state: paused;
+        }
+
+        .industry-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            background: var(--card-bg-1);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            box-shadow: 0 4px 16px var(--card-shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            /* MODIFICATION: Ensured this is present */
+        }
+
+        .industry-card:hover {
+            background: var(--card-bg-2);
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px var(--card-shadow-hover);
+        }
+
+        .industry-card:hover .industry-icon,
+        .industry-card:hover .industry-name {
+            color: var(--accent-color);
+        }
+
+        .industry-icon {
+            font-size: 20px;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+            transition: color 0.3s ease;
+        }
+
+        .industry-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+
+        /* Hero Section Mobile Spacing Fix */
+        @media (max-width: 768px) {
+            .hero-graph-content {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+
+            .hero-grid-container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .hero-text-content {
+                order: 2;
+                text-align: center;
+                /* MODIFICATION: Center text on mobile */
+            }
+
+            /* MODIFICATION: Center buttons on mobile */
+            .hero-text-content .flex {
+                justify-content: center;
+            }
+
+            .hero-graph-content {
+                order: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .header-container {
+                padding: 16px 24px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .logo-text {
+                position: relative;
+                z-index: 999;
+                order: 1;
+                color: #ffffff;
+                /* Keep white on mobile */
+            }
+
+            .header.scrolled .logo-text {
+                color: var(--text-primary);
+            }
+
+
+            .hamburger {
+                display: flex;
+                order: 3;
+                position: relative;
+                z-index: 1002;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: var(--bg-color);
+                /* Will be light bg */
+                flex-direction: column;
+                padding: 20px 30px 30px;
+                gap: 0;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                align-items: flex-start;
+                z-index: 1001;
+                order: 2;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .mobile-nav-header {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 16px;
+                border-bottom: 1px solid var(--card-border);
+                margin-bottom: 16px;
+                width: 100%;
+            }
+
+            .mobile-nav-header .logo-text {
+                font-size: 20px;
+                color: var(--text-primary);
+                /* Mobile menu logo is light mode color */
+            }
+
+            .btn-close-mobile {
+                background: transparent;
+                border: none;
+                font-size: 2.5rem;
+                font-weight: 300;
+                color: var(--text-primary);
+                cursor: pointer;
+                padding: 0;
+                line-height: 1;
+            }
+
+            .nav-menu .nav-link {
+                display: block;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--card-border);
+                width: 100%;
+                color: var(--text-primary);
+                /* Mobile menu links are light mode color */
+            }
+
+            /* MODIFICATION: Removed mobile theme toggle */
+
+            .services-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-choose-section {
+                padding: 80px 24px;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .cta-section {
+                padding: 60px 24px;
+            }
+
+            .cta-title {
+                font-size: 32px;
+            }
+
+            .cta-description {
+                font-size: 16px;
+            }
+
+            .solutions-section {
+                padding: 60px 24px;
+            }
+
+            .solutions-header h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-section {
+                padding: 40px 24px 60px;
+            }
+
+            .services-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+                /* MODIFICATION: Center service header on mobile */
+            }
+
+            .services-title {
+                font-size: 32px;
+            }
+
+            .services-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose-section {
+                padding: 60px 24px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-description {
+                font-size: 16px;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .why-card {
+                padding: 28px 20px;
+            }
+
+            .cta-section {
+                padding: 50px 20px;
+            }
+
+            .cta-title {
+                font-size: 28px;
+            }
+
+            .cta-description {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+
+            .solutions-section {
+                padding: 50px 20px;
+            }
+
+            .solutions-header h2 {
+                font-size: 28px;
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 12px 16px;
+            }
+
+            .logo-text {
+                font-size: 18px;
+            }
+
+            .services-title {
+                font-size: 28px;
+            }
+
+            .card-visual {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-display" style="background: var(--bg-color); color: var(--text-primary);">
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="logo-text">HBR Analytics</div>
+            <nav class="nav-menu" id="navMenu">
+                <!-- MODIFICATION: Added mobile menu header -->
+                <div class="mobile-nav-header lg:hidden">
+                    <div class="logo-text">HBR Analytics</div>
+                    <button class="btn-close-mobile" id="closeMenuBtn">&times;</button>
+                </div>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#industries" class="nav-link">Industries</a>
+                <a href="#why-choose" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <!-- MODIFICATION: Removed theme toggle button -->
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <main class="flex-1">
+
+                <div class="relative flex min-h-screen w-full overflow-hidden" id="home">
+                    <!-- Video background from index.html -->
+                    <div class="absolute inset-0 z-0">
+                        <video autoplay="" class="h-full w-full object-cover" loop="" muted="" playsinline=""
+                            poster="https://i.imgur.com/G5O1jGr.jpg">
+                            <source src="/assets/video/v9-l.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="absolute inset-0 bg-slate-950/75"></div>
+                    </div>
+
+                    <div class="relative z-10 flex-1 flex items-center justify-center" style="padding-top: 60px;">
+                        <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-20 py-12 sm:py-16 lg:py-20">
+                            <div
+                                class="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-12 items-center hero-grid-container">
+
+                                <!-- Left Content -->
+                                <div class="flex flex-col gap-6 z-10 hero-text-content">
+                                    <div class="flex flex-col gap-4 animate-fade-in-up-spring">
+                                        <h1
+                                            class="text-4xl font-black leading-tight tracking-tighter md:text-5xl lg:text-6xl text-white">
+                                            <!-- MODIFICATION: Using g21.html text -->
+                                            Unlock Real-Time Insights. Drive Smarter Decisions.
+                                            <!-- Unlock Actionable Intelligence -->
+                                        </h1>
+                                        <p class="text-base md:text-lg text-slate-200">
+                                            <!-- MODIFICATION: Using g21.html text -->
+                                            Harness the power of business intelligence, predictive analytics, and
+                                            enterprise
+                                            planning in one unified solution.
+                                            <!-- HBR Analytics transforms complex data into elegant, actionable intelligence.
+                                            Leverage our AI-driven platform to gain unparalleled clarity and the
+                                            foresight required to drive decisive business outcomes. -->
+                                        </p>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-4 sm:flex-row animate-fade-in-up-spring"
+                                        style="animation-delay: 0.2s; animation-fill-mode: backwards;">
+                                        <button
+                                            class="flex w-full sm:w-auto min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-wide shadow-lg shadow-primary/30 hover:opacity-90 transition-all">
+                                            <span class="truncate">Get Started</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- 
+                                  MODIFICATION: Right Graphics from g21.html
+                                  Adapted for video background with glass effect
+                                -->
+                                <div class="relative h-[450px] w-full lg:h-[550px] hero-graph-content">
+                                    <div class="absolute inset-0 flex items-center justify-center"
+                                        style="perspective: 1500px;">
+                                        <div class="w-full h-full group" style="transform-style: preserve-3d;">
+                                            <!-- Top Card: Revenue Growth -->
+                                            <div class="absolute w-[85%] h-[55%] top-[5%] right-0 rounded-2xl bg-white/10 backdrop-blur-xl shadow-2xl shadow-black/60 transition-transform duration-500 ease-out group-hover:rotate-y-[-5deg] group-hover:rotate-x-2 group-hover:-translate-y-2 border border-white/20 animate-fade-in-up card-enter"
+                                                style="transform-style: preserve-3d; transform: rotateX(10deg) rotateY(-15deg) translateZ(-20px);">
+                                                <div class="p-6 h-full flex flex-col">
+                                                    <div class="flex items-center justify-between">
+                                                        <h3 class="font-bold text-lg text-white">
+                                                            Revenue Growth</h3>
+                                                        <div class="flex items-center gap-1 text-green-400">
+                                                            <span
+                                                                class="material-symbols-outlined text-xl">arrow_upward</span>
+                                                            <span class="font-semibold">12.4%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-1 mt-4 relative">
+                                                        <svg class="w-full h-full overflow-visible" fill="none"
+                                                            preserveAspectRatio="none" viewBox="0 0 200 100">
+                                                            <path class="graph-grid-lines"
+                                                                d="M0 100 L 200 100 M0 75 L 200 75 M0 50 L 200 50 M0 25 L 200 25 M0 0 L 200 0"
+                                                                stroke="#005bff" stroke-opacity="0.3"
+                                                                stroke-dasharray="2 4" stroke-width="0.75">
+                                                            </path>
+                                                            <path class="graph-line animate-line-draw"
+                                                                d="M 0 85 C 30 95, 40 30, 80 50 S 140 0, 170 30 S 190 20, 200 25"
+                                                                stroke="#005bff" stroke-width="2.5"
+                                                                vector-effect="non-scaling-stroke"></path>
+                                                            <g class="graph-dots animate-fade-in-up initially-hidden"
+                                                                style="animation-delay: 1.5s;">
+                                                                <circle class="stroke-2 stroke-white/30" cx="0" cy="85"
+                                                                    fill="#005bff" r="4"></circle>
+                                                                <circle class="stroke-2 stroke-white/30" cx="80" cy="50"
+                                                                    fill="#005bff" r="4"></circle>
+                                                                <circle class="stroke-2 stroke-white/30" cx="170"
+                                                                    cy="30" fill="#005bff" r="4"></circle>
+                                                            </g>
+                                                            <g class="initially-hidden"
+                                                                style="animation: fade-in-up 0.8s ease-out 1.5s forwards;">
+                                                                <circle
+                                                                    class="blue-dot-enhanced stroke-2 stroke-white/30"
+                                                                    cx="200" cy="25" fill="#005bff" r="4"></circle>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Bottom Card: Performance Bars -->
+                                            <div class="absolute w-full h-[55%] bottom-0 left-0 rounded-2xl bg-white/10 backdrop-blur-xl shadow-2xl shadow-black/40 transition-transform duration-500 ease-out group-hover:rotate-y-[-5deg] group-hover:rotate-x-2 group-hover:translate-y-2 group-hover:translate-x-2 border border-white/20 animate-fade-in-up card-enter-delay"
+                                                style="transform-style: preserve-3d; transform: rotateX(10deg) rotateY(-15deg) translateZ(50px);">
+                                                <div class="p-6 h-full flex flex-col">
+                                                    <div class="flex items-center justify-between">
+                                                        <h3 class="font-bold text-lg text-white">
+                                                            Performance</h3>
+                                                    </div>
+                                                    <div
+                                                        class="flex-1 mt-4 relative flex items-end justify-between px-2 gap-2">
+                                                        <div
+                                                            class="bar bar-1 w-full h-[60%] bg-primary/40 rounded-t-lg transition-all duration-300 hover:bg-primary/60 animate-grow-bar">
+                                                        </div>
+                                                        <div
+                                                            class="bar bar-2 w-full h-[85%] bg-primary/40 rounded-t-lg transition-all duration-300 hover:bg-primary/60 animate-grow-bar">
+                                                        </div>
+                                                        <div
+                                                            class="bar bar-3 w-full h-full bg-primary rounded-t-lg transition-all duration-300 hover:opacity-80 animate-grow-bar">
+                                                        </div>
+                                                        <div
+                                                            class="bar bar-4 w-full h-[70%] bg-primary/40 rounded-t-lg transition-all duration-300 hover:bg-primary/60 animate-grow-bar">
+                                                        </div>
+                                                        <div
+                                                            class="bar bar-5 w-full h-[55%] bg-primary/40 rounded-t-lg transition-all duration-300 hover:bg-primary/60 animate-grow-bar">
+                                                        </div>
+                                                        <div
+                                                            class="bar bar-6 w-full h-[90%] bg-primary/40 rounded-t-lg transition-all duration-300 hover:bg-primary/60 animate-grow-bar">
+                                                        </div>
+                                                        <div
+                                                            class="bar bar-7 w-full h-[75%] bg-primary/40 rounded-t-lg transition-all duration-300 hover:bg-primary/60 animate-grow-bar">
+                                                        </div>
+                                                        <div
+                                                            class="bar bar-8 w-full h-[65%] bg-primary/40 rounded-t-lg transition-all duration-300 hover:bg-primary/60 animate-grow-bar">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Top Small Card: Real-time Growth -->
+                                            <div class="absolute w-auto h-auto -top-[2%] left-[5%] p-3 rounded-2xl bg-white/10 backdrop-blur-xl shadow-2xl shadow-black/40 transition-transform duration-500 ease-out group-hover:rotate-y-[-5deg] group-hover:rotate-x-2 group-hover:-translate-y-2 group-hover:-translate-x-2 border border-white/20 initially-hidden small-card-animated hover:-translate-y-1 hover:shadow-lg"
+                                                style="transform-style: preserve-3d; transform: rotateX(10deg) rotateY(-15deg) translateZ(100px) rotateZ(-3deg); animation-delay: 1.8s;">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="relative flex h-4 w-4">
+                                                        <span
+                                                            class="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-pulse"></span>
+                                                        <span
+                                                            class="relative inline-flex rounded-full h-4 w-4 bg-green-500"></span>
+                                                    </div>
+                                                    <div class="flex flex-col">
+                                                        <span class="text-xs text-slate-200">Real-time
+                                                            Growth</span>
+                                                        <span class="font-bold text-sm text-white">+12.5%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Bottom Small Card: Profit Margin -->
+                                            <div class="absolute w-[220px] h-[70px] -bottom-[5%] left-[5%] rounded-2xl bg-white/10 backdrop-blur-xl shadow-2xl shadow-black/40 transition-transform duration-500 ease-out group-hover:rotate-y-[-5deg] group-hover:rotate-x-2 group-hover:-translate-y-2 group-hover:-translate-x-2 border border-white/20 initially-hidden small-card-animated"
+                                                style="transform-style: preserve-3d; transform: rotateX(10deg) rotateY(-15deg) translateZ(100px); animation-delay: 2.0s;">
+                                                <div class="p-4 h-full flex items-center justify-between">
+                                                    <div class="flex flex-col">
+                                                        <span class="text-xs text-slate-200">Profit
+                                                            Margin</span>
+                                                        <span class="font-bold text-lg text-white">25.8%</span>
+                                                    </div>
+                                                    <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center"
+                                                        style="animation: pulse-indicator 2s cubic-bezier(0.4, 0, 0.6, 1) 3s infinite;">
+                                                        <span
+                                                            class="material-symbols-outlined text-xl">trending_up</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Modified Hero Section -->
+
+
+                <!-- Three Feature Cards Section -->
+                <section class="pt-16 pb-16 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-24" style="background: var(--bg-color);">
+                    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                            <!-- Card 1: Data-Driven Insights -->
+                            <div
+                                class="group relative flex flex-col rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-slate-200/50">
+                                <h3 class="text-2xl font-bold mb-4" style="color: var(--text-primary);">Data-Driven
+                                    Insights</h3>
+                                <p class="mb-6 text-base" style="color: var(--text-secondary);">Transform raw data into
+                                    actionable intelligence with our advanced analytics platform powered by AI and
+                                    machine learning.</p>
+                                <div class="mt-auto flex-grow">
+                                    <div class="h-48 w-full">
+                                        <svg aria-labelledby="revenue-title" class="h-full w-full"
+                                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 400 200">
+                                            <title id="revenue-title">Animated Revenue Growth Graph</title>
+                                            <text fill="currentColor" font-size="12" x="5" y="180"
+                                                style="fill: var(--text-desc);">Q1</text>
+                                            <text fill="currentColor" font-size="12" x="5" y="145"
+                                                style="fill: var(--text-desc);">Q2</text>
+                                            <text fill="currentColor" font-size="12" x="5" y="110"
+                                                style="fill: var(--text-desc);">Q3</text>
+                                            <text fill="currentColor" font-size="12" x="5" y="75"
+                                                style="fill: var(--text-desc);">Q4</text>
+                                            <line stroke="currentColor" stroke-width="0.5" x1="30" x2="395" y1="180"
+                                                y2="180" style="stroke: var(--card-border);"></line>
+                                            <line stroke="currentColor" stroke-width="0.5" x1="30" x2="395" y1="145"
+                                                y2="145" style="stroke: var(--card-border);"></line>
+                                            <line stroke="currentColor" stroke-width="0.5" x1="30" x2="395" y1="110"
+                                                y2="110" style="stroke: var(--card-border);"></line>
+                                            <line stroke="currentColor" stroke-width="0.5" x1="30" x2="395" y1="75"
+                                                y2="75" style="stroke: var(--card-border);"></line>
+                                            <path class="animated-line"
+                                                d="M40,160 C100,120 120,50 200,80 S280,150 320,100 S380,40 390,50"
+                                                fill="none" stroke="#005bff" stroke-width="2.5"></path>
+                                            <circle class="animated-dot" cx="125" cy="65" fill="#005bff" r="4"></circle>
+                                            <circle class="animated-dot animated-dot-delay-1" cx="200" cy="80"
+                                                fill="#005bff" r="4"></circle>
+                                            <circle class="animated-dot animated-dot-delay-2" cx="320" cy="100"
+                                                fill="#005bff" r="4"></circle>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Enterprise Scale -->
+                            <div class="group relative flex flex-col rounded-2xl p-8 text-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                                style="background: linear-gradient(to bottom right, #2563EB, #1E40AF);">
+                                <h3 class="text-2xl font-bold mb-4">Enterprise Scale</h3>
+                                <p class="mb-6 text-white/90 text-base">Built for growth with cloud-native architecture
+                                    that seamlessly handles petabytes of data and millions of users.</p>
+                                <div class="mt-auto flex flex-grow items-end space-x-3">
+                                    <div class="h-16 w-full rounded-t-lg bg-white/30 transition-all duration-300 hover:bg-white/50 animate-grow-bar"
+                                        style="animation-delay: 0.1s;"></div>
+                                    <div class="h-24 w-full rounded-t-lg bg-white/30 transition-all duration-300 hover:bg-white/50 animate-grow-bar"
+                                        style="animation-delay: 0.2s;"></div>
+                                    <div class="h-40 w-full rounded-t-lg bg-white/40 transition-all duration-300 hover:bg-white/60 animate-grow-bar"
+                                        style="animation-delay: 0.3s;"></div>
+                                    <div class="h-32 w-full rounded-t-lg bg-white/30 transition-all duration-300 hover:bg-white/50 animate-grow-bar"
+                                        style="animation-delay: 0.4s;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Real-Time Analytics -->
+                            <div
+                                class="group relative flex flex-col overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-slate-200/50">
+                                <div class="absolute inset-0 pointer-events-none"
+                                    style="background: radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);">
+                                </div>
+                                <div class="relative z-10">
+                                    <h3 class="text-2xl font-bold mb-4" style="color: var(--text-primary);">Real-Time
+                                        Analytics</h3>
+                                    <p class="mb-6 text-base" style="color: var(--text-secondary);">Monitor business
+                                        metrics as they happen with live dashboards and instant alerts for critical
+                                        changes.</p>
+                                    <div class="relative mt-8 h-48">
+                                        <div class="absolute left-4 top-2 flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg transition-transform duration-300 hover:scale-105 border border-slate-200/50 animate-fade-in-up"
+                                            style="animation-delay: 0.5s;">
+                                            <span
+                                                class="material-symbols-outlined text-blue-600 text-2xl">trending_up</span>
+                                            <div>
+                                                <p class="text-xs font-medium" style="color: var(--text-desc);">Revenue
+                                                    Growth</p>
+                                                <p class="font-bold text-lg" style="color: var(--text-primary);">+24.8%
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-4 right-4 flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg transition-transform duration-300 hover:scale-105 border border-slate-200/50 animate-fade-in-up"
+                                            style="animation-delay: 0.7s;">
+                                            <span class="material-symbols-outlined text-blue-600 text-2xl">speed</span>
+                                            <div>
+                                                <p class="text-xs font-medium" style="color: var(--text-desc);">
+                                                    Performance</p>
+                                                <p class="font-bold text-lg" style="color: var(--text-primary);">98.2%
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section class="services-section" id="services">
+                    <div class="services-content">
+                        <div class="services-content-left">
+                            <span class="services-label">OUR SERVICES</span>
+                            <h2 class="services-title">What makes our solutions transform businesses</h2>
+                        </div>
+                        <div class="services-content-right">
+                            <p class="services-description">
+                                We combine cutting-edge technology with deep industry expertise to deliver measurable
+                                results that drive your business forward. Our comprehensive suite of services ensures
+                                you have everything needed to succeed in the digital age.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="services-cards">
+                        <div class="service-card">
+                            <div class="card-visual">
+                                <div class="animation-layer">
+                                    <div class="animated-grid"></div>
+                                    <div class="particles">
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                    </div>
+                                    <div class="gradient-orb" style="top: 30%; left: 30%;"></div>
+                                    <div class="data-bars">
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                        <div class="bar"></div>
+                                    </div>
+                                    <div class="icon-container">
+                                        <div class="central-icon">
+                                            <div class="icon-core">
+                                                <svg class="icon-svg" viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M3 13h2v8H3v-8zm6-4h2v12H9V9zm6-6h2v18h-2V3zm6 8h2v10h-2V11z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="card-title">Business Intelligence</h3>
+                            <p class="card-description">Transform data into actionable insights with powerful analytics,
+                                interactive dashboards, and real-time reporting</p>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="card-visual">
+                                <div class="animation-layer">
+                                    <div class="animated-grid"></div>
+                                    <div class="particles">
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                    </div>
+                                    <div class="gradient-orb" style="top: 50%; left: 50%;"></div>
+                                    <div class="icon-container">
+                                        <div class="wave wave-1"></div>
+                                        <div class="wave wave-2"></div>
+                                        <div class="central-icon">
+                                            <div class="icon-core">
+                                                <svg class="icon-svg" viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="card-title">SAP & Cloud Solutions</h3>
+                            <p class="card-description">Seamlessly integrate SAP systems with cloud infrastructure for
+                                scalable, secure enterprise management</p>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="card-visual">
+                                <div class="animation-layer">
+                                    <div class="particles">
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                    </div>
+                                    <div class="gradient-orb" style="top: 50%; left: 50%;"></div>
+                                    <div class="scan-line"></div>
+                                    <div class="animated-grid" style="opacity: 0.3;"></div>
+                                    <div class="icon-container">
+                                        <div class="central-icon">
+                                            <div class="icon-core">
+                                                <i class="fa-solid fa-brain"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="card-title">AI & Machine Learning</h3>
+                            <p class="card-description">Harness artificial intelligence and predictive analytics to
+                                automate processes and unlock new opportunities</p>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="card-visual">
+                                <div class="animation-layer">
+                                    <div class="animated-grid"></div>
+                                    <div class="particles">
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                        <div class="particle"></div>
+                                    </div>
+                                    <div class="gradient-orb" style="top: 60%; left: 40%;"></div>
+                                    <div class="icon-container">
+                                        <div class="orbit-trail"></div>
+                                        <div class="central-icon">
+                                            <div class="icon-core">
+                                                <svg class="icon-svg" viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="orbit-icon orbit-3">
+                                            <div class="central-icon">
+                                                <div class="icon-core">
+                                                    <svg class="icon-svg" viewBox="0 0 24 24"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="card-title">Quantitative Risk</h3>
+                            <p class="card-description">Advanced quantitative models and risk frameworks to identify,
+                                measure, and mitigate financial risks</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Why Choose Us Section - MODIFICATION: Blue background -->
+                <section class="why-choose-section" id="why-choose">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="section-header">
+                            <div class="section-badge">
+                                <i class="fas fa-award"></i>
+                                <span>Why Choose Us</span>
+                            </div>
+                            <h2 class="section-title">Excellence in Every Solution</h2>
+                            <p class="section-description">
+                                Our commitment to innovation, quality, and client success sets us apart in the industry.
+                                Discover what
+                                makes us the preferred partner for digital transformation.
+                            </p>
+                        </div>
+
+                        <div class="why-choose-grid">
+                            <div class="why-card">
+                                <div class="why-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h3 class="why-title">Innovation First</h3>
+                                <p class="why-description">
+                                    We leverage cutting-edge technologies and methodologies to deliver solutions that
+                                    keep
+                                    you ahead of
+                                    the competition.
+                                </p>
+                                <ul class="why-features">
+                                    <li><i class="fas fa-check-circle"></i> Latest Tech Stack</li>
+                                    <li><i class="fas fa-check-circle"></i> Agile Methodology</li>
+                                    <li><i class="fas fa-check-circle"></i> Continuous Innovation</li>
+                                </ul>
+                            </div>
+
+                            <div class="why-card">
+                                <div class="why-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3 class="why-title">Expert Team</h3>
+                                <p class="why-description">
+                                    Our certified professionals bring years of experience across multiple industries and
+                                    technologies.
+                                </p>
+                                <ul class="why-features">
+                                    <li><i class="fas fa-check-circle"></i> SAP Certified Consultants</li>
+                                    <li><i class="fas fa-check-circle"></i> Industry Veterans</li>
+                                    <li><i class="fas fa-check-circle"></i> Dedicated Support</li>
+                                </ul>
+                            </div>
+
+                            <div class="why-card">
+                                <div class="why-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <h3 class="why-title">Proven Track Record</h3>
+                                <p class="why-description">
+                                    With 500+ successful implementations, we have the experience to handle projects of
+                                    any
+                                    scale and
+                                    complexity.
+                                </p>
+                                <ul class="why-features">
+                                    <li><i class="fas fa-check-circle"></i> 500+ Projects Delivered</li>
+                                    <li><i class="fas fa-check-circle"></i> 98% Client Satisfaction</li>
+                                    <li><i class="fas fa-check-circle"></i> On-Time Delivery</li>
+                                </ul>
+                            </div>
+
+                            <div class="why-card">
+                                <div class="why-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <h3 class="why-title">24/7 Support</h3>
+                                <p class="why-description">
+                                    Round-the-clock support ensures your systems run smoothly and any issues are
+                                    resolved
+                                    promptly.
+                                </p>
+                                <ul class="why-features">
+                                    <li><i class="fas fa-check-circle"></i> 24/7 Availability</li>
+                                    <li><i class="fas fa-check-circle"></i> Rapid Response Time</li>
+                                    <li><i class="fas fa-check-circle"></i> Proactive Monitoring</li>
+                                </ul>
+                            </div>
+
+                            <div class="why-card">
+                                <div class="why-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3 class="why-title">Security & Compliance</h3>
+                                <p class="why-description">
+                                    We prioritize data security and ensure compliance with industry standards and
+                                    regulations.
+                                </p>
+                                <ul class="why-features">
+                                    <li><i class="fas fa-check-circle"></i> Enterprise-Grade Security</li>
+                                    <li><i class="fas fa-check-circle"></i> Compliance Standards</li>
+                                    <li><i class="fas fa-check-circle"></i> Data Protection</li>
+                                </ul>
+                            </div>
+
+                            <div class="why-card">
+                                <div class="why-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 class="why-title">Scalable Solutions</h3>
+                                <p class="why-description">
+                                    Our solutions grow with your business, ensuring long-term value and adaptability to
+                                    changing needs.
+                                </p>
+                                <ul class="why-features">
+                                    <li><i class="fas fa-check-circle"></i> Cloud-Native Architecture</li>
+                                    <li><i class="fas fa-check-circle"></i> Flexible Scaling</li>
+                                    <li><i class="fas fa-check-circle"></i> Future-Ready Technology</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Solutions Section -->
+                <section class="solutions-section" id="solutions">
+                    <div class="solutions-container">
+                        <div class="solutions-header">
+                            <h2>Comprehensive Platform Solutions</h2>
+                            <p>From data integration to advanced analytics, our platform provides everything you need to
+                                transform your business operations and drive measurable results.</p>
+                        </div>
+                        <div class="solutions-grid">
+                            <div class="solution-card">
+                                <div class="solution-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h3>Data Integration</h3>
+                                <p>Connect all your data sources seamlessly with our robust integration capabilities.
+                                </p>
+                                <ul class="solution-features">
+                                    <li><i class="fas fa-check-circle"></i> Multi-source connectivity</li>
+                                    <li><i class="fas fa-check-circle"></i> Real-time sync</li>
+                                    <li><i class="fas fa-check-circle"></i> Data quality assurance</li>
+                                </ul>
+                            </div>
+
+                            <div class="solution-card">
+                                <div class="solution-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Advanced Analytics</h3>
+                                <p>Unlock insights with powerful analytics and visualization tools.</p>
+                                <ul class="solution-features">
+                                    <li><i class="fas fa-check-circle"></i> Predictive modeling</li>
+                                    <li><i class="fas fa-check-circle"></i> Custom dashboards</li>
+                                    <li><i class="fas fa-check-circle"></i> AI-powered insights</li>
+                                </ul>
+                            </div>
+
+                            <div class="solution-card">
+                                <div class="solution-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>Enterprise Security</h3>
+                                <p>Bank-level security protocols protect your most valuable asset - your data.</p>
+                                <ul class="solution-features">
+                                    <li><i class="fas fa-check-circle"></i> End-to-end encryption</li>
+                                    <li><i class="fas fa-check-circle"></i> Compliance ready</li>
+                                    <li><i class="fas fa-check-circle"></i> Access controls</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Industries Section -->
+                <section class="industries-section" id="industries">
+                    <div class="w-full px-4 sm:px-6 lg:px-8 xl:px-20">
+                        <div class="mx-auto max-w-7xl">
+                            <div class="text-center mb-8">
+                                <h2 class="text-3xl font-black md:text-4xl lg:text-5xl mb-4"
+                                    style="color: var(--text-primary);">Industries We
+                                    Serve</h2>
+                            </div>
+
+                            <div class="industries-scroll-wrapper">
+                                <div class="industries-row row-1">
+                                    <!-- MODIFICATION: Duplicated content for seamless loop -->
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-industry"></i>
+                                        <h3 class="industry-name">Manufacturing</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-shopping-cart"></i>
+                                        <h3 class="industry-name">Retail</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-heartbeat"></i>
+                                        <h3 class="industry-name">Healthcare</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-university"></i>
+                                        <h3 class="industry-name">Finance</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-truck"></i>
+                                        <h3 class="industry-name">Logistics</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-graduation-cap"></i>
+                                        <h3 class="industry-name">Education</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-bolt"></i>
+                                        <h3 class="industry-name">Energy</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-home"></i>
+                                        <h3 class="industry-name">Real Estate</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-utensils"></i>
+                                        <h3 class="industry-name">Hospitality</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-film"></i>
+                                        <h3 class="industry-name">Media</h3>
+                                    </div>
+                                    <!-- Duplicate Set -->
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-industry"></i>
+                                        <h3 class="industry-name">Manufacturing</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-shopping-cart"></i>
+                                        <h3 class="industry-name">Retail</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-heartbeat"></i>
+                                        <h3 class="industry-name">Healthcare</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-university"></i>
+                                        <h3 class="industry-name">Finance</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-truck"></i>
+                                        <h3 class="industry-name">Logistics</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-graduation-cap"></i>
+                                        <h3 class="industry-name">Education</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-bolt"></i>
+                                        <h3 class="industry-name">Energy</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-home"></i>
+                                        <h3 class="industry-name">Real Estate</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-utensils"></i>
+                                        <h3 class="industry-name">Hospitality</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-film"></i>
+                                        <h3 class="industry-name">Media</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="industries-scroll-wrapper">
+                                <div class="industries-row row-2">
+                                    <!-- MODIFICATION: Duplicated content for seamless loop -->
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-car"></i>
+                                        <h3 class="industry-name">Automotive</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-wifi"></i>
+                                        <h3 class="industry-name">Telecom</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-flask"></i>
+                                        <h3 class="industry-name">Pharmaceuticals</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-cube"></i>
+                                        <h3 class="industry-name">E-commerce</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-ship"></i>
+                                        <h3 class="industry-name">Shipping</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-building"></i>
+                                        <h3 class="industry-name">Construction</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-seedling"></i>
+                                        <h3 class="industry-name">Agriculture</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-plane"></i>
+                                        <h3 class="industry-name">Aviation</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-cogs"></i>
+                                        <h3 class="industry-name">Technology</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-mobile-alt"></i>
+                                        <h3 class="industry-name">Telecommunications</h3>
+                                    </div>
+                                    <!-- Duplicate Set -->
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-car"></i>
+                                        <h3 class="industry-name">Automotive</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-wifi"></i>
+                                        <h3 class="industry-name">Telecom</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-flask"></i>
+                                        <h3 class="industry-name">Pharmaceuticals</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-cube"></i>
+                                        <h3 class="industry-name">E-commerce</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-ship"></i>
+                                        <h3 class="industry-name">Shipping</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-building"></i>
+                                        <h3 class="industry-name">Construction</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-seedling"></i>
+                                        <h3 class="industry-name">Agriculture</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-plane"></i>
+                                        <h3 class="industry-name">Aviation</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-cogs"></i>
+                                        <h3 class="industry-name">Technology</h3>
+                                    </div>
+                                    <div class="industry-card">
+                                        <i class="industry-icon fas fa-mobile-alt"></i>
+                                        <h3 class="industry-name">Telecommunications</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Call to Action Section - MODIFICATION: Blue background -->
+                <section class="cta-section" id="cta">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="cta-container">
+                            <div class="cta-content">
+                                <h1 class="cta-title">Ready to Transform Your Business Insights?</h1>
+                                <p class="cta-description">
+                                    Unlock powerful analytics and data-driven decisions with our all-in-one platform.
+                                </p>
+                            </div>
+                            <div class="flex flex-1 justify-center">
+                                <button class="cta-button">
+                                    <span class="truncate">Get Started Now</span>
+                                    <span class="material-symbols-outlined"
+                                        data-icon="arrow_forward">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- MODIFICATION: Improved Footer Design -->
+                <footer class="py-16 px-6 md:px-10"
+                    style="background: var(--card-bg-2); border-color: var(--card-border);">
+                    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+                        <!-- Column 1: Logo and About -->
+                        <div class="md:col-span-1">
+                            <div class="logo-text" style="color: var(--accent-color); font-size: 24px;">
+                                HBR Analytics
+                            </div>
+                            <p class="mt-4 text-base" style="color: var(--text-secondary);">
+                                Driving smarter decisions with data-driven insights and enterprise-ready solutions.
+                            </p>
+                            <div class="flex gap-4 mt-6">
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i class="fab fa-facebook-f text-xl"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i class="fab fa-linkedin-in text-xl"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: Quick Links -->
+                        <div>
+                            <h4 class="text-lg font-semibold" style="color: var(--text-primary);">Quick Links</h4>
+                            <ul class="mt-4 space-y-3">
+                                <li><a href="#home" class="hover:text-primary transition-colors"
+                                        style="color: var(--text-secondary);">Home</a></li>
+                                <li><a href="#services" class="hover:text-primary transition-colors"
+                                        style="color: var(--text-secondary);">Services</a></li>
+                                <li><a href="#industries" class="hover:text-primary transition-colors"
+                                        style="color: var(--text-secondary);">Industries</a></li>
+                                <li><a href="#why-choose" class="hover:text-primary transition-colors"
+                                        style="color: var(--text-secondary);">Why Us</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 3: Solutions -->
+                        <div>
+                            <h4 class="text-lg font-semibold" style="color: var(--text-primary);">Solutions</h4>
+                            <ul class="mt-4 space-y-3">
+                                <li><a href="#" class="hover:text-primary transition-colors"
+                                        style="color: var(--text-secondary);">Business Intelligence</a></li>
+                                <li><a href="#" class="hover:text-primary transition-colors"
+                                        style="color: var(--text-secondary);">AI & ML</a></li>
+                                <li><a href="#" class="hover:text-primary transition-colors"
+                                        style="color: var(--text-secondary);">Cloud Solutions</a></li>
+                                <li><a href="#" class="hover:text-primary transition-colors"
+                                        style="color: var(--text-secondary);">Quantitative Risk</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 4: Contact -->
+                        <div>
+                            <h4 class="text-lg font-semibold" style="color: var(--text-primary);">Contact Us</h4>
+                            <ul class="mt-4 space-y-3">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                    <span style="color: var(--text-secondary);">123 Analytics Way, Data City</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-phone text-primary"></i>
+                                    <span style="color: var(--text-secondary);">(123) 456-7890</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-envelope text-primary"></i>
+                                    <span style="color: var(--text-secondary);">info@hbr-analytics.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Bar -->
+                    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t" style="border-color: var(--card-border);">
+                        <p class="text-center text-sm" style="color: var(--text-secondary);">
+                            © 2024 HBR Analytics. All rights reserved.
+                        </p>
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // MODIFICATION: Removed theme toggle logic
+
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const closeMenuBtn = document.getElementById('closeMenuBtn'); // MODIFICATION: Added close button
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileMenuOverlay.addEventListener('click', closeMenu);
+        closeMenuBtn.addEventListener('click', closeMenu); // MODIFICATION: Added close button listener
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Initialize bar heights for service cards
+        const allBars = document.querySelectorAll('.service-card .data-bars .bar');
+        allBars.forEach((bar) => {
+            const baseHeight = 30 + Math.random() * 30;
+            bar.style.setProperty('--base-height', baseHeight + 'px');
+        });
+
+        // Service card hover interactions
+        const cards = document.querySelectorAll('.service-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                const orbs = this.querySelectorAll('.gradient-orb');
+                const particles = this.querySelectorAll('.particle');
+                const scanLine = this.querySelector('.scan-line');
+
+                orbs.forEach(orb => orb.style.animationDuration = '3s');
+                particles.forEach(particle => particle.style.animationDuration = '3s');
+                if (scanLine) scanLine.style.animationDuration = '2s';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                const orbs = this.querySelectorAll('.gradient-orb');
+                const particles = this.querySelectorAll('.particle');
+                const scanLine = this.querySelector('.scan-line');
+
+                orbs.forEach(orb => orb.style.animationDuration = '6s');
+                particles.forEach(particle => particle.style.animationDuration = '5s');
+                if (scanLine) scanLine.style.animationDuration = '4s';
+            });
+
+        });
+    </script>
+</body>
+
+</html>
