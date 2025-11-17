@@ -57,12 +57,12 @@
 
 .service-card {
   position: relative;
-  background: var(--accent-color);
+  background: #ffffff;
   border-radius: 25px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .service-card:hover {
@@ -75,7 +75,7 @@
   position: relative;
   width: 100%;
   height: 320px;
-  background: var(--accent-color);
+  background: #ffffff;
   overflow: hidden;
 }
 
@@ -109,7 +109,7 @@
   right: -28px;
   width: 84px;
   height: 84px;
-  background: #ffffff;
+  background: var(--accent-color);
   border-radius: 50%;
   clip-path: circle(0% at 50% 50%);
   transform-origin: center;
@@ -125,7 +125,7 @@
   width: 24px;
   height: 24px;
   fill: none;
-  stroke: #ffffff;
+  stroke: var(--accent-color);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -136,7 +136,7 @@
 }
 
 .service-card:hover .card-arrow svg {
-  stroke: var(--accent-color);
+  stroke: #ffffff;
   transform: translate(6px, -6px);
 }
 
@@ -166,23 +166,23 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(37, 99, 235, 0.1);
+  border: 2px solid rgba(37, 99, 235, 0.2);
   transition: all 0.4s ease;
 }
 
 .service-card:hover .icon-core {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+  background: rgba(37, 99, 235, 0.2);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 0 40px rgba(37, 99, 235, 0.3);
 }
 
 .icon-svg,
 .icon-core i {
   width: 36px;
   height: 36px;
-  fill: #ffffff;
-  color: #ffffff;
+  fill: var(--accent-color);
+  color: var(--accent-color);
   font-size: 36px;
   transition: all 0.3s ease;
 }
@@ -249,7 +249,7 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
   filter: blur(30px);
   animation: orb-float 6s ease-in-out infinite;
 }
@@ -268,7 +268,7 @@
   position: absolute;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.5), transparent);
   animation: scan-move 4s ease-in-out infinite;
   filter: blur(1px);
 }
@@ -297,7 +297,7 @@
 .data-bars .bar {
   width: 12px;
   height: var(--base-height, 40px);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.8) 0%, rgba(37, 99, 235, 0.4) 100%);
   border-radius: 4px;
   animation: bar-pulse 3s ease-in-out infinite;
 }
@@ -328,7 +328,7 @@
   transform: translate(-50%, -50%);
   width: 100px;
   height: 100px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(37, 99, 235, 0.5);
   border-radius: 50%;
   opacity: 0;
   animation: wave-pulse 3s ease-out infinite;
@@ -364,7 +364,7 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background: #ffffff;
+  background: var(--accent-color);
   border-radius: 50%;
   opacity: 0;
   animation: particle-float 5s ease-in-out infinite;
@@ -419,8 +419,8 @@
   width: 100%;
   height: 100%;
   background-image:
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 30px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 30px);
+    repeating-linear-gradient(0deg, rgba(37, 99, 235, 0.05) 0px, rgba(37, 99, 235, 0.05) 1px, transparent 1px, transparent 30px),
+    repeating-linear-gradient(90deg, rgba(37, 99, 235, 0.05) 0px, rgba(37, 99, 235, 0.05) 1px, transparent 1px, transparent 30px);
   opacity: 0.4;
   animation: grid-slide 20s linear infinite;
 }
@@ -442,7 +442,7 @@
   transform: translate(-50%, -50%);
   width: 140px;
   height: 140px;
-  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border: 1px dashed rgba(37, 99, 235, 0.3);
   border-radius: 50%;
   opacity: 0.4;
   animation: orbit-rotate 15s linear infinite;
@@ -496,13 +496,13 @@
   padding: 28px;
   position: relative;
   z-index: 2;
-  background: var(--accent-color);
+  background: #ffffff;
 }
 
 .card-title {
   font-size: 20px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary, #0f172a);
   margin-bottom: 0;
   transition: all 0.3s ease;
 }
@@ -510,7 +510,7 @@
 .card-description {
   font-size: 14px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary, #475569);
   opacity: 0;
   max-height: 0;
   overflow: hidden;
