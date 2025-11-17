@@ -16,11 +16,13 @@ function Home() {
           <div className="relative w-full overflow-hidden" style={{ background: 'var(--bg-color)' }}>
             <HeroSection />
           </div>
-          <TabsSection />
+        
           <FeatureCards />
+          <TabsSection />
           <ServicesSection />
           <WhyChooseUsSection />
           <SolutionsSection />
+      
           <IndustriesSection />
           <CTASection />
         </main>

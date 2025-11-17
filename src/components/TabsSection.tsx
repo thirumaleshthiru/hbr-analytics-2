@@ -1,8 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './TabsSection.css';
 
 const TabsSection = () => {
   const [activeTab, setActiveTab] = useState(1);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Auto-rotate tabs every 5 seconds
+  useEffect(() => {
+    intervalRef.current = window.setInterval(() => {
+      setActiveTab((prev) => {
+        const next = prev === 4 ? 1 : prev + 1;
+        return next;
+      });
+    }, 5000);
+
+    return () => {
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
+
+  const handleTabClick = (tabId: number) => {
+    setActiveTab(tabId);
+    // Pause auto-rotation when user manually clicks
+    if (intervalRef.current) {
+      window.clearInterval(intervalRef.current);
+    }
+    // Resume after 10 seconds of inactivity
+    setTimeout(() => {
+      intervalRef.current = window.setInterval(() => {
+        setActiveTab((prev) => {
+          const next = prev === 4 ? 1 : prev + 1;
+          return next;
+        });
+      }, 5000);
+    }, 10000);
+  };
 
   const tabs = [
     {
@@ -94,9 +128,15 @@ const TabsSection = () => {
   const activeTabData = tabs.find(tab => tab.id === activeTab) || tabs[0];
 
   return (
-    <section id="tabs" className="tabs section" style={{ background: 'var(--bg-color)', padding: '60px 0' }}>
+    <section id="tabs" className="tabs section" style={{ background: 'var(--bg-color)' }}>
       <div className="container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px' }}>
         <div className="tabs-wrapper">
+          <div className="services-content" style={{ marginBottom: '10px' }}>
+            <div className="services-content-left">
+              <span className="services-label">OUR SERVICES</span>
+            </div>
+            
+          </div>
           <div className="tabs-header">
             <ul className="nav nav-tabs">
               {tabs.map((tab) => (
@@ -105,7 +145,7 @@ const TabsSection = () => {
                     className={`nav-link ${activeTab === tab.id ? 'active show' : ''}`}
                     onClick={(e) => {
                       e.preventDefault();
-                      setActiveTab(tab.id);
+                      handleTabClick(tab.id);
                       document.getElementById('tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }}
                     style={{ cursor: 'pointer' }}
