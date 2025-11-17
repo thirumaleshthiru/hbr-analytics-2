@@ -1,0 +1,707 @@
+/*--------------------------------------------------------------
+# Tabs Section
+--------------------------------------------------------------*/
+.tabs .tabs-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tabs .tabs-header {
+  margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .tabs .tabs-header {
+    margin-bottom: 60px;
+  }
+}
+
+.tabs .tabs-header .nav-tabs {
+  border: none;
+  justify-content: center;
+  gap: 0;
+  background: var(--surface-color);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 2px 20px color-mix(in srgb, var(--default-color), transparent 94%);
+}
+
+@media (max-width: 768px) {
+  .tabs .tabs-header .nav-tabs {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+.tabs .tabs-header .nav-tabs .nav-item {
+  flex: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .tabs .tabs-header .nav-tabs .nav-item {
+    flex: none;
+    width: 100%;
+  }
+}
+
+.tabs .tabs-header .nav-tabs .nav-link {
+  border: none;
+  background: transparent;
+  padding: 0;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tabs .tabs-header .nav-tabs .nav-link.active {
+  background: var(--accent-color);
+}
+
+.tabs .tabs-header .nav-tabs .nav-link.active .tab-content-preview .tab-number {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--contrast-color), transparent 85%);
+}
+
+.tabs .tabs-header .nav-tabs .nav-link.active .tab-content-preview .tab-text h6,
+.tabs .tabs-header .nav-tabs .nav-link.active .tab-content-preview .tab-text small {
+  color: var(--contrast-color);
+}
+
+.tabs .tabs-header .nav-tabs .nav-link:hover:not(.active) {
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+}
+
+.tabs .tabs-header .nav-tabs .nav-link:hover:not(.active) .tab-content-preview .tab-number {
+  background: color-mix(in srgb, var(--accent-color), transparent 85%);
+  color: var(--accent-color);
+}
+
+.tabs .tabs-header .nav-tabs .nav-link .tab-content-preview {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+}
+
+@media (max-width: 768px) {
+  .tabs .tabs-header .nav-tabs .nav-link .tab-content-preview {
+    padding: 16px 20px;
+    gap: 12px;
+  }
+}
+
+.tabs .tabs-header .nav-tabs .nav-link .tab-content-preview .tab-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--default-color), transparent 92%);
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .tabs .tabs-header .nav-tabs .nav-link .tab-content-preview .tab-number {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+}
+
+.tabs .tabs-header .nav-tabs .nav-link .tab-content-preview .tab-text {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .tabs .tabs-header .nav-tabs .nav-link .tab-content-preview .tab-text {
+    flex: 1;
+  }
+}
+
+.tabs .tabs-header .nav-tabs .nav-link .tab-content-preview .tab-text h6 {
+  margin: 0 0 2px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--heading-color);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .tabs .tabs-header .nav-tabs .nav-link .tab-content-preview .tab-text h6 {
+    font-size: 13px;
+  }
+}
+
+.tabs .tabs-header .nav-tabs .nav-link .tab-content-preview .tab-text small {
+  font-size: 11px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  transition: all 0.3s ease;
+  display: block;
+  line-height: 1;
+}
+
+.tabs .tab-content .tab-pane {
+  animation: fadeInContent 0.5s ease-in-out;
+}
+
+.tabs .tab-content .content-area {
+  padding-right: 40px;
+}
+
+@media (max-width: 992px) {
+  .tabs .tab-content .content-area {
+    padding-right: 0;
+    margin-bottom: 50px;
+  }
+}
+
+.tabs .tab-content .content-area .content-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  color: var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.tabs .tab-content .content-area .content-badge i {
+  font-size: 14px;
+}
+
+.tabs .tab-content .content-area h3 {
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .tabs .tab-content .content-area h3 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .tabs .tab-content .content-area h3 {
+    font-size: 24px;
+  }
+}
+
+.tabs .tab-content .content-area p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .tabs .tab-content .content-area p {
+    font-size: 15px;
+  }
+}
+
+.tabs .tab-content .content-area .highlight-stats {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 576px) {
+  .tabs .tab-content .content-area .highlight-stats {
+    gap: 24px;
+  }
+}
+
+.tabs .tab-content .content-area .highlight-stats .stat-item .stat-value {
+  display: block;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--accent-color);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .tabs .tab-content .content-area .highlight-stats .stat-item .stat-value {
+    font-size: 24px;
+  }
+}
+
+.tabs .tab-content .content-area .highlight-stats .stat-item .stat-label {
+  font-size: 12px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabs .tab-content .content-area .feature-points {
+  margin-bottom: 40px;
+}
+
+.tabs .tab-content .content-area .feature-points .point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.tabs .tab-content .content-area .feature-points .point-item:last-child {
+  margin-bottom: 0;
+}
+
+.tabs .tab-content .content-area .feature-points .point-item i {
+  font-size: 12px;
+  color: var(--accent-color);
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.tabs .tab-content .content-area .feature-points .point-item span {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--default-color);
+}
+
+.tabs .tab-content .content-area .explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tabs .tab-content .content-area .explore-link:hover {
+  gap: 12px;
+  color: var(--accent-color);
+}
+
+.tabs .tab-content .content-area .explore-link:hover i {
+  transform: translate(2px, -2px);
+}
+
+.tabs .tab-content .content-area .explore-link i {
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.tabs .tab-content .visual-content {
+  position: relative;
+  padding-left: 40px;
+}
+
+@media (max-width: 992px) {
+  .tabs .tab-content .visual-content {
+    padding-left: 0;
+  }
+}
+
+.tabs .tab-content .visual-content img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.tabs .tab-content .visual-content .floating-element {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+@media (max-width: 768px) {
+  .tabs .tab-content .visual-content .floating-element {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+.tabs .tab-content .visual-content .floating-element .floating-card {
+  background: var(--surface-color);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--default-color), transparent 85%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .tabs .tab-content .visual-content .floating-element .floating-card {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+}
+
+.tabs .tab-content .visual-content .floating-element .floating-card i {
+  font-size: 20px;
+  color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .tabs .tab-content .visual-content .floating-element .floating-card i {
+    font-size: 18px;
+  }
+}
+
+.tabs .tab-content .visual-content .floating-element .floating-card .card-info span {
+  display: block;
+  font-size: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.tabs .tab-content .visual-content .floating-element .floating-card .card-info strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+@media (max-width: 768px) {
+  .tabs .tab-content .visual-content .floating-element .floating-card .card-info strong {
+    font-size: 12px;
+  }
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatAnimation {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
+
+    <!-- Tabs Section -->
+    <section id="tabs" class="tabs section">
+
+      <div class="container">
+
+        <div class="tabs-wrapper">
+          <div class="tabs-header">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tabs-tab-1">
+                  <div class="tab-content-preview">
+                    <span class="tab-number">01</span>
+                    <div class="tab-text">
+                      <h6>Innovation</h6>
+                      <small>Creative solutions</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-2">
+                  <div class="tab-content-preview">
+                    <span class="tab-number">02</span>
+                    <div class="tab-text">
+                      <h6>Strategy</h6>
+                      <small>Business growth</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-3">
+                  <div class="tab-content-preview">
+                    <span class="tab-number">03</span>
+                    <div class="tab-text">
+                      <h6>Performance</h6>
+                      <small>Optimal results</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-4">
+                  <div class="tab-content-preview">
+                    <span class="tab-number">04</span>
+                    <div class="tab-text">
+                      <h6>Integration</h6>
+                      <small>Seamless workflow</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tab-content">
+
+            <div class="tab-pane fade active show" id="tabs-tab-1">
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="content-area">
+                    <div class="content-badge">
+                      <i class="bi bi-lightbulb"></i>
+                      <span>Innovation Hub</span>
+                    </div>
+                    <h3>Revolutionary Design Thinking</h3>
+                    <p>Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+
+                    <div class="highlight-stats">
+                      <div class="stat-item">
+                        <span class="stat-value">145%</span>
+                        <span class="stat-label">Innovation Rate</span>
+                      </div>
+                      <div class="stat-item">
+                        <span class="stat-value">28K</span>
+                        <span class="stat-label">Ideas Generated</span>
+                      </div>
+                    </div>
+
+                    <div class="feature-points">
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
+                      </div>
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Aspernatur aut odit fugit sed quia consequuntur</span>
+                      </div>
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Magni dolores eos qui ratione voluptatem</span>
+                      </div>
+                    </div>
+
+                    <a href="#" class="explore-link">
+                      Explore Innovation <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="visual-content">
+                    <img src="assets/img/features/features-2.webp" alt="" class="img-fluid">
+                    <div class="floating-element">
+                      <div class="floating-card">
+                        <i class="bi bi-lightning-charge"></i>
+                        <div class="card-info">
+                          <span>Speed</span>
+                          <strong>3x Faster</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="tabs-tab-2">
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="content-area">
+                    <div class="content-badge">
+                      <i class="bi bi-compass"></i>
+                      <span>Strategic Planning</span>
+                    </div>
+                    <h3>Data-Driven Business Strategy</h3>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+
+                    <div class="highlight-stats">
+                      <div class="stat-item">
+                        <span class="stat-value">234%</span>
+                        <span class="stat-label">Growth Rate</span>
+                      </div>
+                      <div class="stat-item">
+                        <span class="stat-value">156</span>
+                        <span class="stat-label">Strategies</span>
+                      </div>
+                    </div>
+
+                    <div class="feature-points">
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Similique sunt in culpa qui officia deserunt</span>
+                      </div>
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Mollitia animi id est laborum et dolorum fuga</span>
+                      </div>
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Et harum quidem rerum facilis est expedita</span>
+                      </div>
+                    </div>
+
+                    <a href="#" class="explore-link">
+                      View Strategy <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="visual-content">
+                    <img src="assets/img/features/features-4.webp" alt="" class="img-fluid">
+                    <div class="floating-element">
+                      <div class="floating-card">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        <div class="card-info">
+                          <span>Growth</span>
+                          <strong>+189% ROI</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="tabs-tab-3">
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="content-area">
+                    <div class="content-badge">
+                      <i class="bi bi-speedometer2"></i>
+                      <span>High Performance</span>
+                    </div>
+                    <h3>Optimized System Performance</h3>
+                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae itaque earum rerum hic tenetur sapiente delectus.</p>
+
+                    <div class="highlight-stats">
+                      <div class="stat-item">
+                        <span class="stat-value">99.8%</span>
+                        <span class="stat-label">System Uptime</span>
+                      </div>
+                      <div class="stat-item">
+                        <span class="stat-value">2.4s</span>
+                        <span class="stat-label">Load Time</span>
+                      </div>
+                    </div>
+
+                    <div class="feature-points">
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Ut aut reiciendis voluptatibus maiores alias</span>
+                      </div>
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Consequatur aut perferendis doloribus asperiores</span>
+                      </div>
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Repellat nam libero tempore cum soluta nobis</span>
+                      </div>
+                    </div>
+
+                    <a href="#" class="explore-link">
+                      Check Performance <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="visual-content">
+                    <img src="assets/img/features/features-1.webp" alt="" class="img-fluid">
+                    <div class="floating-element">
+                      <div class="floating-card">
+                        <i class="bi bi-cpu"></i>
+                        <div class="card-info">
+                          <span>Power</span>
+                          <strong>128 Cores</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="tabs-tab-4">
+              <div class="row align-items-center">
+                <div class="col-lg-6">
+                  <div class="content-area">
+                    <div class="content-badge">
+                      <i class="bi bi-puzzle"></i>
+                      <span>Smart Integration</span>
+                    </div>
+                    <h3>Seamless Workflow Integration</h3>
+                    <p>Eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis voluptas assumenda est omnis dolor repellendus temporibus autem quibusdam et aut officiis debitis.</p>
+
+                    <div class="highlight-stats">
+                      <div class="stat-item">
+                        <span class="stat-value">450+</span>
+                        <span class="stat-label">Integrations</span>
+                      </div>
+                      <div class="stat-item">
+                        <span class="stat-value">85%</span>
+                        <span class="stat-label">Automation</span>
+                      </div>
+                    </div>
+
+                    <div class="feature-points">
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Rerum necessitatibus saepe eveniet voluptates</span>
+                      </div>
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Repudiandae sint et molestiae non recusandae</span>
+                      </div>
+                      <div class="point-item">
+                        <i class="bi bi-arrow-right"></i>
+                        <span>Itaque earum rerum hic tenetur sapiente</span>
+                      </div>
+                    </div>
+
+                    <a href="#" class="explore-link">
+                      Start Integration <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="visual-content">
+                    <img src="assets/img/features/features-5.webp" alt="" class="img-fluid">
+                    <div class="floating-element">
+                      <div class="floating-card">
+                        <i class="bi bi-link-45deg"></i>
+                        <div class="card-info">
+                          <span>Connected</span>
+                          <strong>24/7 Sync</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Tabs Section -->
