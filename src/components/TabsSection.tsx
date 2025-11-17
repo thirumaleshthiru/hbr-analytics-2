@@ -8,86 +8,86 @@ const TabsSection = () => {
     {
       id: 1,
       number: '01',
-      title: 'Innovation',
-      subtitle: 'Creative solutions',
-      badge: { icon: 'fa-lightbulb', text: 'Innovation Hub' },
-      heading: 'Revolutionary Design Thinking',
-      description: 'Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+      title: 'Consulting & Support',
+      subtitle: 'Management consulting',
+      badge: { icon: 'fa-headset', text: 'Consulting Services' },
+      heading: 'Consulting & Support',
+      description: 'We focus on strategy, marketing, organization, operations, technology, transformation, digital, advanced analytics, corporate finance, mergers & acquisitions and sustainability across all industries and geographies. Our deep, functional expertise and broad knowledge of the major trends and forces shaping the business world enable us to deliver holistic perspective and capture value across boundaries and between the silos of any organization.',
       stats: [
-        { value: '145%', label: 'Innovation Rate' },
-        { value: '28K', label: 'Ideas Generated' }
+        { value: '500+', label: 'Projects Delivered' },
+        { value: '98%', label: 'Client Satisfaction' }
       ],
       points: [
-        'Nemo enim ipsam voluptatem quia voluptas sit',
-        'Aspernatur aut odit fugit sed quia consequuntur',
-        'Magni dolores eos qui ratione voluptatem'
+        'Strategy, marketing, organization, operations, technology',
+        'Transformation, digital, advanced analytics',
+        'Corporate finance, mergers & acquisitions and sustainability'
       ],
-      exploreText: 'Explore Innovation',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
-      floatingCard: { icon: 'fa-bolt', label: 'Speed', value: '3x Faster' }
+      exploreText: 'LEARN MORE',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800',
+      floatingCard: { icon: 'fa-headset', label: 'Support', value: '24/7 Available' }
     },
     {
       id: 2,
       number: '02',
-      title: 'Strategy',
-      subtitle: 'Business growth',
-      badge: { icon: 'fa-compass', text: 'Strategic Planning' },
-      heading: 'Data-Driven Business Strategy',
-      description: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.',
+      title: 'Staffing Services',
+      subtitle: 'Talent solutions',
+      badge: { icon: 'fa-users', text: 'Staffing Solutions' },
+      heading: 'Staffing Services',
+      description: 'We understand, define, and solve specific staffing needs, thus allowing small and large organisations the time and freedom to focus on their core business. With HBR as your consulting partner, you can easily meet your short-term and long-term business objectives. Once we thoroughly understand your staffing requirements, we will be able to provide you the right people with the right skill set, attitude, and commitment that will help propel your organisation toward success.',
       stats: [
-        { value: '234%', label: 'Growth Rate' },
-        { value: '156', label: 'Strategies' }
+        { value: '1000+', label: 'Placements' },
+        { value: '95%', label: 'Retention Rate' }
       ],
       points: [
-        'Similique sunt in culpa qui officia deserunt',
-        'Mollitia animi id est laborum et dolorum fuga',
-        'Et harum quidem rerum facilis est expedita'
+        'Understand, define, and solve specific staffing needs',
+        'Right people with the right skill set and attitude',
+        'Help propel your organisation toward success'
       ],
-      exploreText: 'View Strategy',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
-      floatingCard: { icon: 'fa-chart-line', label: 'Growth', value: '+189% ROI' }
+      exploreText: 'LEARN MORE',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800',
+      floatingCard: { icon: 'fa-users', label: 'Talent', value: 'Expert Team' }
     },
     {
       id: 3,
       number: '03',
-      title: 'Performance',
-      subtitle: 'Optimal results',
-      badge: { icon: 'fa-tachometer-alt', text: 'High Performance' },
-      heading: 'Optimized System Performance',
-      description: 'Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet voluptates repudiandae sint et molestiae non recusandae itaque earum rerum hic tenetur sapiente delectus.',
+      title: 'Corporate Trainings',
+      subtitle: 'Learning & development',
+      badge: { icon: 'fa-user-tie', text: 'Training Programs' },
+      heading: 'Corporate Trainings',
+      description: 'Training is the process of getting learners up to speed with new responsibilities and familiar with company culture. Like any learning experience, onboarding is journeys, not a one-time event. Onboarding prepares new employees to become productive quickly and reinforce the decision to join the organization. Dynamic learning experiences to connect early on with employees and build confidence to ensure a greater contribution.',
       stats: [
-        { value: '99.8%', label: 'System Uptime' },
-        { value: '2.4s', label: 'Load Time' }
+        { value: '5000+', label: 'Trained Employees' },
+        { value: '90%', label: 'Success Rate' }
       ],
       points: [
-        'Ut aut reiciendis voluptatibus maiores alias',
-        'Consequatur aut perferendis doloribus asperiores',
-        'Repellat nam libero tempore cum soluta nobis'
+        'Get learners up to speed with new responsibilities',
+        'Prepare new employees to become productive quickly',
+        'Dynamic learning experiences to build confidence'
       ],
-      exploreText: 'Check Performance',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800',
-      floatingCard: { icon: 'fa-microchip', label: 'Power', value: '128 Cores' }
+      exploreText: 'LEARN MORE',
+      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800',
+      floatingCard: { icon: 'fa-user-tie', label: 'Training', value: 'Expert Led' }
     },
     {
       id: 4,
       number: '04',
-      title: 'Integration',
-      subtitle: 'Seamless workflow',
-      badge: { icon: 'fa-puzzle-piece', text: 'Smart Integration' },
-      heading: 'Seamless Workflow Integration',
-      description: 'Eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis voluptas assumenda est omnis dolor repellendus temporibus autem quibusdam et aut officiis debitis.',
+      title: 'Hire, Train & Deploy',
+      subtitle: 'HTD concept',
+      badge: { icon: 'fa-user-check', text: 'HTD Services' },
+      heading: 'Hire, Train & Deploy',
+      description: 'We introduce talent sourced at the national level to join your workforce trained and skill-ready. We nullify your effort and cut down costs for you by introducing our HTD concept that will replace your manpower for sourcing, training and hiring for your teams success in the future. Our process to select only the best candidates to suit your requirement is flawless and helps you get the top talent from across India.',
       stats: [
-        { value: '450+', label: 'Integrations' },
-        { value: '85%', label: 'Automation' }
+        { value: '2000+', label: 'Deployed Talent' },
+        { value: '85%', label: 'Cost Reduction' }
       ],
       points: [
-        'Rerum necessitatibus saepe eveniet voluptates',
-        'Repudiandae sint et molestiae non recusandae',
-        'Itaque earum rerum hic tenetur sapiente'
+        'Talent sourced at the national level, trained and skill-ready',
+        'Replace your manpower for sourcing, training and hiring',
+        'Get the top talent from across India'
       ],
-      exploreText: 'Start Integration',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800',
-      floatingCard: { icon: 'fa-link', label: 'Connected', value: '24/7 Sync' }
+      exploreText: 'LEARN MORE',
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800',
+      floatingCard: { icon: 'fa-user-check', label: 'HTD', value: 'Ready Talent' }
     }
   ];
 
@@ -106,6 +106,7 @@ const TabsSection = () => {
                     onClick={(e) => {
                       e.preventDefault();
                       setActiveTab(tab.id);
+                      document.getElementById('tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }}
                     style={{ cursor: 'pointer' }}
                   >
@@ -123,7 +124,7 @@ const TabsSection = () => {
           </div>
 
           <div className="tab-content">
-            <div className={`tab-pane fade ${activeTab === activeTabData.id ? 'active show' : ''}`}>
+            <div key={activeTab} className="tab-pane fade active show">
               <div className="row align-items-center" style={{ display: 'flex', alignItems: 'center', gap: '40px', flexWrap: 'wrap' }}>
                 <div className="col-lg-6" style={{ flex: '1', minWidth: '300px' }}>
                   <div className="content-area">
@@ -134,24 +135,8 @@ const TabsSection = () => {
                     <h3>{activeTabData.heading}</h3>
                     <p>{activeTabData.description}</p>
 
-                    <div className="highlight-stats">
-                      {activeTabData.stats.map((stat, index) => (
-                        <div key={index} className="stat-item">
-                          <span className="stat-value">{stat.value}</span>
-                          <span className="stat-label">{stat.label}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="feature-points">
-                      {activeTabData.points.map((point, index) => (
-                        <div key={index} className="point-item">
-                          <i className="fas fa-arrow-right"></i>
-                          <span>{point}</span>
-                        </div>
-                      ))}
-                    </div>
-
+                  
+ 
                     <a href="#" className="explore-link">
                       {activeTabData.exploreText} <i className="fas fa-external-link-alt"></i>
                     </a>

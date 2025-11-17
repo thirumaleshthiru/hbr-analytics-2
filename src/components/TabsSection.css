@@ -16,6 +16,7 @@
 
 .tabs .tabs-header .nav-tabs {
   border: none;
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 0;
@@ -23,6 +24,26 @@
   border-radius: 8px;
   padding: 8px;
   box-shadow: 0 2px 20px rgba(15, 23, 42, 0.06);
+}
+
+/* Decorative lines on the left edge to match reference */
+.tabs .tabs-header .nav-tabs::before,
+.tabs .tabs-header .nav-tabs::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  width: 2px;
+  height: 24px;
+  background: #99c1ff;
+  border-radius: 999px;
+}
+
+.tabs .tabs-header .nav-tabs::before {
+  top: 12px;
+}
+
+.tabs .tabs-header .nav-tabs::after {
+  bottom: 12px;
 }
 
 @media (max-width: 768px) {
@@ -55,18 +76,17 @@
 }
 
 .tabs .tabs-header .nav-tabs .nav-link.active {
-  background: rgba(0, 91, 255, 0.1);
-  border: 1px solid rgba(0, 91, 255, 0.2);
+  background: var(--accent-color, #005bff);
 }
 
 .tabs .tabs-header .nav-tabs .nav-link.active .tab-content-preview .tab-number {
-  color: var(--accent-color, #005bff);
-  background: rgba(0, 91, 255, 0.15);
+  color: #ffffff;
+  background: var(--accent-color, #005bff);
 }
 
 .tabs .tabs-header .nav-tabs .nav-link.active .tab-content-preview .tab-text h6,
 .tabs .tabs-header .nav-tabs .nav-link.active .tab-content-preview .tab-text small {
-  color: var(--text-primary, #0f172a);
+  color: #0f172a;
 }
 
 .tabs .tabs-header .nav-tabs .nav-link:hover:not(.active) {
