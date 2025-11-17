@@ -130,7 +130,7 @@ const TabsSection = () => {
 
   return (
     <section id="tabs" className="tabs section" style={{ background: 'var(--bg-color)' }}>
-      <div className="container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px' }}>
+      <div className="container tabs-container">
         <div className="tabs-wrapper">
           <div className="services-content" style={{ marginBottom: '10px' }}>
             <div className="services-content-left">
@@ -165,8 +165,8 @@ const TabsSection = () => {
 
           <div className="tab-content">
             <div key={activeTab} className="tab-pane fade active show">
-              <div className="row align-items-center" style={{ display: 'flex', alignItems: 'center', gap: '40px', flexWrap: 'wrap' }}>
-                <div className="col-lg-6" style={{ flex: '1', minWidth: '300px' }}>
+              <div className="row align-items-center tabs-row">
+                <div className="col-lg-6 tabs-col">
                   <div className="content-area">
                     <div className="content-badge">
                       <i className={`fas ${activeTabData.badge.icon}`}></i>
@@ -179,7 +179,7 @@ const TabsSection = () => {
                     </a>
                   </div>
                 </div>
-                <div className="col-lg-6" style={{ flex: '1', minWidth: '300px' }}>
+                <div className="col-lg-6 tabs-col">
                   <div className="visual-content">
                     <img src={activeTabData.image} alt={activeTabData.title} className="img-fluid" />
                     <div className="floating-element">
