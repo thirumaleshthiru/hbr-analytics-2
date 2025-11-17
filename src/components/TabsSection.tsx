@@ -5,14 +5,17 @@ const TabsSection = () => {
   const [activeTab, setActiveTab] = useState(1);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Auto-rotate tabs every 5 seconds
   useEffect(() => {
-    intervalRef.current = window.setInterval(() => {
-      setActiveTab((prev) => {
-        const next = prev === 4 ? 1 : prev + 1;
-        return next;
-      });
-    }, 5000);
+    const startAutoSwitch = () => {
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current);
+      }
+      intervalRef.current = window.setInterval(() => {
+        setActiveTab((prev) => (prev === 4 ? 1 : prev + 1));
+      }, 5000);
+    };
+
+    startAutoSwitch();
 
     return () => {
       if (intervalRef.current) {
@@ -23,17 +26,15 @@ const TabsSection = () => {
 
   const handleTabClick = (tabId: number) => {
     setActiveTab(tabId);
-    // Pause auto-rotation when user manually clicks
     if (intervalRef.current) {
       window.clearInterval(intervalRef.current);
     }
-    // Resume after 10 seconds of inactivity
     setTimeout(() => {
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current);
+      }
       intervalRef.current = window.setInterval(() => {
-        setActiveTab((prev) => {
-          const next = prev === 4 ? 1 : prev + 1;
-          return next;
-        });
+        setActiveTab((prev) => (prev === 4 ? 1 : prev + 1));
       }, 5000);
     }, 10000);
   };
@@ -135,7 +136,6 @@ const TabsSection = () => {
             <div className="services-content-left">
               <span className="services-label">OUR SERVICES</span>
             </div>
-            
           </div>
           <div className="tabs-header">
             <ul className="nav nav-tabs">
@@ -174,9 +174,6 @@ const TabsSection = () => {
                     </div>
                     <h3>{activeTabData.heading}</h3>
                     <p>{activeTabData.description}</p>
-
-                  
- 
                     <a href="#" className="explore-link">
                       {activeTabData.exploreText} <i className="fas fa-external-link-alt"></i>
                     </a>
@@ -206,4 +203,3 @@ const TabsSection = () => {
 };
 
 export default TabsSection;
-

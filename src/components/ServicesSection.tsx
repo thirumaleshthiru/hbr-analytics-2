@@ -10,11 +10,11 @@ const ServicesSection = () => {
       (bar as HTMLElement).style.setProperty('--base-height', baseHeight + 'px');
     });
   }, []);
+  
   return (
     <section className="services-section" id="services">
       <div className="services-content">
         <div className="services-content-left">
-         
           <h2 className="services-title">What makes our solutions transform businesses</h2>
         </div>
         <div className="services-content-right">
@@ -57,12 +57,19 @@ const ServicesSection = () => {
                 </div>
               </div>
             </div>
+            <div className="card-arrow">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
+              </svg>
+            </div>
           </div>
-          <h3 className="card-title">Business Intelligence</h3>
-          <p className="card-description">
-            Transform data into actionable insights with powerful analytics,
-            interactive dashboards, and real-time reporting
-          </p>
+          <div className="card-content">
+            <h3 className="card-title">Business Intelligence</h3>
+            <p className="card-description">
+              Transform data into actionable insights with powerful analytics,
+              interactive dashboards, and real-time reporting
+            </p>
+          </div>
         </div>
 
         {/* Card 2: SAP & Cloud Solutions */}
@@ -89,12 +96,19 @@ const ServicesSection = () => {
                 </div>
               </div>
             </div>
+            <div className="card-arrow">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
+              </svg>
+            </div>
           </div>
-          <h3 className="card-title">SAP & Cloud Solutions</h3>
-          <p className="card-description">
-            Seamlessly integrate SAP systems with cloud infrastructure for
-            scalable, secure enterprise management
-          </p>
+          <div className="card-content">
+            <h3 className="card-title">SAP & Cloud Solutions</h3>
+            <p className="card-description">
+              Seamlessly integrate SAP systems with cloud infrastructure for
+              scalable, secure enterprise management
+            </p>
+          </div>
         </div>
 
         {/* Card 3: AI & Machine Learning */}
@@ -118,12 +132,19 @@ const ServicesSection = () => {
                 </div>
               </div>
             </div>
+            <div className="card-arrow">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
+              </svg>
+            </div>
           </div>
-          <h3 className="card-title">AI & Machine Learning</h3>
-          <p className="card-description">
-            Harness artificial intelligence and predictive analytics to
-            automate processes and unlock new opportunities
-          </p>
+          <div className="card-content">
+            <h3 className="card-title">AI & Machine Learning</h3>
+            <p className="card-description">
+              Harness artificial intelligence and predictive analytics to
+              automate processes and unlock new opportunities
+            </p>
+          </div>
         </div>
 
         {/* Card 4: Quantitative Risk */}
@@ -158,12 +179,19 @@ const ServicesSection = () => {
                 </div>
               </div>
             </div>
+            <div className="card-arrow">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
+              </svg>
+            </div>
           </div>
-          <h3 className="card-title">Quantitative Risk</h3>
-          <p className="card-description">
-            Advanced quantitative models and risk frameworks to identify,
-            measure, and mitigate financial risks
-          </p>
+          <div className="card-content">
+            <h3 className="card-title">Quantitative Risk</h3>
+            <p className="card-description">
+              Advanced quantitative models and risk frameworks to identify,
+              measure, and mitigate financial risks
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -171,4 +199,3 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
-
