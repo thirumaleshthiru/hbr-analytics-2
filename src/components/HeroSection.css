@@ -36,7 +36,7 @@
 
 /* Blue dot enhanced animation */
 .blue-dot-enhanced {
-  animation: dot-push-pull 2s infinite, dot-glow-enhanced 2s infinite;
+  animation: dot-push-pull 2s infinite;
 }
 
 @keyframes dot-push-pull {

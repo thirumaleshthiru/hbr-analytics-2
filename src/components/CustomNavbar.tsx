@@ -1,9 +1,11 @@
 import  { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const CustomNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -21,6 +23,8 @@ const CustomNavbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Check initial scroll position
+    handleScroll();
     
     return () => {
       document.body.style.overflow = '';
@@ -35,9 +39,10 @@ const CustomNavbar = () => {
         onClick={closeMobileMenu}
       />
 
-<header className="header" id="header" style={{
-        boxShadow: isScrolled ? '0 2px 8px rgba(0, 0, 0, 0.1)' : 'none'
-      }}>
+<header 
+        className={`header ${isScrolled || !isHomePage ? 'scrolled' : ''}`} 
+        id="header"
+      >
         <div className="header-container">
           <Link to="/" className="logo-text" style={{ textDecoration: 'none' }}>
             HBR Analytics
@@ -104,12 +109,18 @@ const CustomNavbar = () => {
           left: 0;
           right: 0;
           z-index: 1000;
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          border-bottom: 1px solid #e2e8f0;
+          background: transparent;
+          border-bottom: 1px solid transparent;
           transition: all 0.3s ease;
           padding: 16px 0;
+        }
+
+        .header.scrolled {
+          background: rgba(255, 255, 255, 0.7);
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+          border-bottom: 1px solid #e2e8f0;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .header-container {
@@ -124,10 +135,12 @@ const CustomNavbar = () => {
         .logo-text {
           font-size: 22px;
           font-weight: 700;
-          background: linear-gradient(90deg, #005bff 0%, #005bff 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: #ffffff;
+          transition: color 0.3s ease;
+        }
+
+        .header.scrolled .logo-text {
+          color: #0f172a;
         }
 
         .hamburger {
@@ -142,9 +155,13 @@ const CustomNavbar = () => {
         .hamburger span {
           width: 28px;
           height: 3px;
-          background: #0f172a;
+          background: #ffffff;
           border-radius: 3px;
           transition: all 0.3s ease;
+        }
+
+        .header.scrolled .hamburger span {
+          background: #0f172a;
         }
 
         .hamburger.active span:nth-child(1) {
@@ -166,11 +183,15 @@ const CustomNavbar = () => {
         }
 
         .nav-link {
-          color: #0f172a;
+          color: #ffffff;
           text-decoration: none;
           font-size: 15px;
           font-weight: 500;
           transition: color 0.3s ease;
+        }
+
+        .header.scrolled .nav-link {
+          color: #0f172a;
         }
 
         .nav-link:hover {
@@ -189,6 +210,11 @@ const CustomNavbar = () => {
             position: relative;
             z-index: 999;
             order: 1;
+            color: #ffffff;
+          }
+
+          .header.scrolled .logo-text {
+            color: #0f172a;
           }
 
           .hamburger {
@@ -223,8 +249,9 @@ const CustomNavbar = () => {
           .nav-menu .nav-link {
             display: block;
             padding: 15px 0;
-            
+            border-bottom: 1px solid #e2e8f0;
             width: 100%;
+            color: #0f172a;
           }
         }
 

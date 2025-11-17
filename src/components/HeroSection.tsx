@@ -143,10 +143,7 @@ const HeroSection = () => {
                         <span className="text-xs text-slate-200">Profit Margin</span>
                         <span className="font-bold text-lg text-white">25.8%</span>
                       </div>
-                      <div
-                        className="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center"
-                        style={{ animation: 'pulse-indicator 2s cubic-bezier(0.4, 0, 0.6, 1) 3s infinite' }}
-                      >
+                      <div className="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center">
                         <span className="material-symbols-outlined text-xl">trending_up</span>
                       </div>
                     </div>
