@@ -1,201 +1,318 @@
-import { useState, useEffect, useRef } from 'react';
-import './TabsSection.css';
+import { useState, useEffect } from 'react';
+ 
 
 const TabsSection = () => {
-  const [activeTab, setActiveTab] = useState(1);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [activeTab, setActiveTab] = useState('tab1');
 
-  useEffect(() => {
-    const startAutoSwitch = () => {
-      if (intervalRef.current) {
-        window.clearInterval(intervalRef.current);
-      }
-      intervalRef.current = window.setInterval(() => {
-        setActiveTab((prev) => (prev === 4 ? 1 : prev + 1));
-      }, 5000);
-    };
-
-    startAutoSwitch();
-
-    return () => {
-      if (intervalRef.current) {
-        window.clearInterval(intervalRef.current);
-      }
-    };
-  }, []);
-
-  const handleTabClick = (tabId: number) => {
-    setActiveTab(tabId);
-    if (intervalRef.current) {
-      window.clearInterval(intervalRef.current);
-    }
-    setTimeout(() => {
-      if (intervalRef.current) {
-        window.clearInterval(intervalRef.current);
-      }
-      intervalRef.current = window.setInterval(() => {
-        setActiveTab((prev) => (prev === 4 ? 1 : prev + 1));
-      }, 5000);
-    }, 10000);
-  };
-
+  // Tab data matching g5.html
   const tabs = [
     {
-      id: 1,
+      id: 'tab1',
       number: '01',
-      title: 'Consulting & Support',
-      subtitle: 'Management consulting',
-      badge: { icon: 'fa-headset', text: 'Consulting Services' },
-      heading: 'Consulting & Support',
-      description: 'We focus on strategy, marketing, organization, operations, technology, transformation, digital, advanced analytics, corporate finance, mergers & acquisitions and sustainability across all industries and geographies. Our deep, functional expertise and broad knowledge of the major trends and forces shaping the business world enable us to deliver holistic perspective and capture value across boundaries and between the silos of any organization.',
-      stats: [
-        { value: '500+', label: 'Projects Delivered' },
-        { value: '98%', label: 'Client Satisfaction' }
+      title: 'Business Intelligence',
+      subtitle: 'Data Insights',
+      cardTitle: 'Business Intelligence',
+      cardDescription: 'Transform data into actionable insights with powerful analytics, interactive dashboards, and real-time reporting',
+      services: [
+        {
+          title: 'Interactive Dashboards',
+          description: 'Transform data into actionable insights with powerful analytics, interactive dashboards, and real-time reporting'
+        },
+        {
+          title: 'Data Visualization',
+          description: 'Turn complex datasets into clear, interactive visual stories that drive decision-making.'
+        },
+        {
+          title: 'Predictive Analytics',
+          description: 'Forecast future trends using historical data patterns to stay ahead of market shifts.'
+        }
       ],
-      points: [
-        'Strategy, marketing, organization, operations, technology',
-        'Transformation, digital, advanced analytics',
-        'Corporate finance, mergers & acquisitions and sustainability'
-      ],
-      exploreText: 'LEARN MORE',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800',
-      floatingCard: { icon: 'fa-headset', label: 'Support', value: '24/7 Available' }
+      learnMoreText: 'Explore BI Solutions',
+      animationType: 'bi' // Business Intelligence
     },
     {
-      id: 2,
+      id: 'tab2',
       number: '02',
-      title: 'Staffing Services',
-      subtitle: 'Talent solutions',
-      badge: { icon: 'fa-users', text: 'Staffing Solutions' },
-      heading: 'Staffing Services',
-      description: 'We understand, define, and solve specific staffing needs, thus allowing small and large organisations the time and freedom to focus on their core business. With HBR as your consulting partner, you can easily meet your short-term and long-term business objectives. Once we thoroughly understand your staffing requirements, we will be able to provide you the right people with the right skill set, attitude, and commitment that will help propel your organisation toward success.',
-      stats: [
-        { value: '1000+', label: 'Placements' },
-        { value: '95%', label: 'Retention Rate' }
+      title: 'SAP & Cloud',
+      subtitle: 'Infrastructure',
+      cardTitle: 'SAP & Cloud Solutions',
+      cardDescription: 'Seamlessly integrate SAP systems with cloud infrastructure for scalable, secure enterprise management',
+      services: [
+        {
+          title: 'Enterprise Resource Planning',
+          description: 'Seamlessly integrate SAP systems with cloud infrastructure for scalable, secure enterprise management'
+        },
+        {
+          title: 'SAP Implementation',
+          description: 'End-to-end deployment of SAP ERP tailored to your specific business requirements.'
+        },
+        {
+          title: 'Cloud Migration',
+          description: 'Secure and efficient transition of legacy systems to modern, scalable cloud platforms.'
+        }
       ],
-      points: [
-        'Understand, define, and solve specific staffing needs',
-        'Right people with the right skill set and attitude',
-        'Help propel your organisation toward success'
-      ],
-      exploreText: 'LEARN MORE',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800',
-      floatingCard: { icon: 'fa-users', label: 'Talent', value: 'Expert Team' }
+      learnMoreText: 'Explore SAP Services',
+      animationType: 'sap' // SAP & Cloud
     },
     {
-      id: 3,
+      id: 'tab3',
       number: '03',
-      title: 'Corporate Trainings',
-      subtitle: 'Learning & development',
-      badge: { icon: 'fa-user-tie', text: 'Training Programs' },
-      heading: 'Corporate Trainings',
-      description: 'Training is the process of getting learners up to speed with new responsibilities and familiar with company culture. Like any learning experience, onboarding is journeys, not a one-time event. Onboarding prepares new employees to become productive quickly and reinforce the decision to join the organization. Dynamic learning experiences to connect early on with employees and build confidence to ensure a greater contribution.',
-      stats: [
-        { value: '5000+', label: 'Trained Employees' },
-        { value: '90%', label: 'Success Rate' }
+      title: 'AI & Machine Learning',
+      subtitle: 'Automation',
+      cardTitle: 'AI & Machine Learning',
+      cardDescription: 'Harness artificial intelligence and predictive analytics to automate processes and unlock new opportunities',
+      services: [
+        {
+          title: 'Intelligent Automation',
+          description: 'Harness artificial intelligence and predictive analytics to automate processes and unlock new opportunities'
+        },
+        {
+          title: 'Natural Language Processing',
+          description: 'Advanced text and speech analysis to automate customer support and derive insights.'
+        },
+        {
+          title: 'Computer Vision',
+          description: 'Image recognition solutions for automated quality control, security, and monitoring.'
+        }
       ],
-      points: [
-        'Get learners up to speed with new responsibilities',
-        'Prepare new employees to become productive quickly',
-        'Dynamic learning experiences to build confidence'
-      ],
-      exploreText: 'LEARN MORE',
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800',
-      floatingCard: { icon: 'fa-user-tie', label: 'Training', value: 'Expert Led' }
+      learnMoreText: 'Explore AI Solutions',
+      animationType: 'ai' // AI & ML
     },
     {
-      id: 4,
+      id: 'tab4',
       number: '04',
-      title: 'Hire, Train & Deploy',
-      subtitle: 'HTD concept',
-      badge: { icon: 'fa-user-check', text: 'HTD Services' },
-      heading: 'Hire, Train & Deploy',
-      description: 'We introduce talent sourced at the national level to join your workforce trained and skill-ready. We nullify your effort and cut down costs for you by introducing our HTD concept that will replace your manpower for sourcing, training and hiring for your teams success in the future. Our process to select only the best candidates to suit your requirement is flawless and helps you get the top talent from across India.',
-      stats: [
-        { value: '2000+', label: 'Deployed Talent' },
-        { value: '85%', label: 'Cost Reduction' }
+      title: 'Quantitative Risk',
+      subtitle: 'Financial Safety',
+      cardTitle: 'Quantitative Risk',
+      cardDescription: 'Advanced quantitative models and risk frameworks to identify, measure, and mitigate financial risks',
+      services: [
+        {
+          title: 'Financial Modeling',
+          description: 'Advanced quantitative models and risk frameworks to identify, measure, and mitigate financial risks'
+        },
+        {
+          title: 'Credit Risk Modeling',
+          description: 'Robust statistical models to assess and manage borrower default probabilities effectively.'
+        },
+        {
+          title: 'Market Risk Analysis',
+          description: 'Sophisticated tools to evaluate potential losses due to market factor movements.'
+        }
       ],
-      points: [
-        'Talent sourced at the national level, trained and skill-ready',
-        'Replace your manpower for sourcing, training and hiring',
-        'Get the top talent from across India'
-      ],
-      exploreText: 'LEARN MORE',
-      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800',
-      floatingCard: { icon: 'fa-user-check', label: 'HTD', value: 'Ready Talent' }
+      learnMoreText: 'Explore Risk Solutions',
+      animationType: 'risk' // Quantitative Risk
     }
   ];
 
-  const activeTabData = tabs.find(tab => tab.id === activeTab) || tabs[0];
+  const [activeServiceCard, setActiveServiceCard] = useState(0);
 
-  return (
-    <section id="tabs" className="tabs section" style={{ background: 'var(--bg-color)' }}>
-      <div className="container tabs-container">
-        <div className="tabs-wrapper">
-          <div className="services-content" style={{ marginBottom: '10px' }}>
-            <div className="services-content-left">
-              <span className="services-label">OUR SERVICES</span>
+  // Reset active service card when tab changes
+  useEffect(() => {
+    setActiveServiceCard(0);
+  }, [activeTab]);
+
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+  };
+
+  const handleServiceCardClick = (index: number) => {
+    setActiveServiceCard(index);
+  };
+
+  // Render animation based on tab type
+  const renderAnimation = (type: string) => {
+    switch (type) {
+      case 'bi':
+        return (
+          <>
+            <div className="animated-grid"></div>
+            <div className="particles">
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
             </div>
-          </div>
-          <div className="tabs-header">
-            <ul className="nav nav-tabs">
-              {tabs.map((tab) => (
-                <li key={tab.id} className="nav-item">
-                  <a
-                    className={`nav-link ${activeTab === tab.id ? 'active show' : ''}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleTabClick(tab.id);
-                      document.getElementById('tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <div className="tab-content-preview">
-                      <span className="tab-number">{tab.number}</span>
-                      <div className="tab-text">
-                        <h6>{tab.title}</h6>
-                        <small>{tab.subtitle}</small>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="tab-content">
-            <div key={activeTab} className="tab-pane fade active show">
-              <div className="row align-items-center tabs-row">
-                <div className="col-lg-6 tabs-col">
-                  <div className="content-area">
-                    <div className="content-badge">
-                      <i className={`fas ${activeTabData.badge.icon}`}></i>
-                      <span>{activeTabData.badge.text}</span>
-                    </div>
-                    <h3>{activeTabData.heading}</h3>
-                    <p>{activeTabData.description}</p>
-                    <a href="#" className="explore-link">
-                      {activeTabData.exploreText} <i className="fas fa-external-link-alt"></i>
-                    </a>
+            <div className="gradient-orb" style={{ top: '30%', left: '30%' }}></div>
+            <div className="data-bars">
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+            </div>
+            <div className="icon-container">
+              <div className="central-icon">
+                <div className="icon-core">
+                  <svg className="icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 13h2v8H3v-8zm6-4h2v12H9V9zm6-6h2v18h-2V3zm6 8h2v10h-2V11z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </>
+        );
+      case 'sap':
+        return (
+          <>
+            <div className="animated-grid"></div>
+            <div className="particles">
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+            </div>
+            <div className="gradient-orb" style={{ top: '50%', left: '50%' }}></div>
+            <div className="icon-container">
+              <div className="wave wave-1"></div>
+              <div className="wave wave-2"></div>
+              <div className="central-icon">
+                <div className="icon-core">
+                  <svg className="icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </>
+        );
+      case 'ai':
+        return (
+          <>
+            <div className="particles">
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+            </div>
+            <div className="gradient-orb" style={{ top: '50%', left: '50%' }}></div>
+            <div className="scan-line"></div>
+            <div className="animated-grid" style={{ opacity: 0.3 }}></div>
+            <div className="icon-container">
+              <div className="central-icon">
+                <div className="icon-core">
+                  <i className="fas fa-brain" style={{ fontSize: '2rem', color: '#2563eb' }}></i>
+                </div>
+              </div>
+            </div>
+          </>
+        );
+      case 'risk':
+        return (
+          <>
+            <div className="animated-grid"></div>
+            <div className="particles">
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+            </div>
+            <div className="gradient-orb" style={{ top: '60%', left: '40%' }}></div>
+            <div className="icon-container">
+              <div className="orbit-trail"></div>
+              <div className="central-icon">
+                <div className="icon-core">
+                  <svg className="icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="orbit-icon orbit-3">
+                <div className="central-icon">
+                  <div className="icon-core">
+                    <svg className="icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
+                    </svg>
                   </div>
                 </div>
-                <div className="col-lg-6 tabs-col">
-                  <div className="visual-content">
-                    <img src={activeTabData.image} alt={activeTabData.title} className="img-fluid" />
-                    <div className="floating-element">
-                      <div className="floating-card">
-                        <i className={`fas ${activeTabData.floatingCard.icon}`}></i>
-                        <div className="card-info">
-                          <span>{activeTabData.floatingCard.label}</span>
-                          <strong>{activeTabData.floatingCard.value}</strong>
+              </div>
+            </div>
+          </>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <section className="tabs-section tech-bg-grid" id="solutions">
+      <div className="common-container">
+        <div className="tabs-header-section">
+          <span className="tabs-section-badge">
+            <i className="fas fa-microchip"></i>
+            Our Solutions
+          </span>
+          <br /> <br />
+          <h2 className="tabs-section-title">
+            Advanced <span className="highlight-text">Tech Solutions</span>
+          </h2>
+          <p className="tabs-section-description">
+            Explore our specialized service areas designed to drive growth, optimize operations, and build
+            sustainable success.
+          </p>
+        </div>
+
+        <div className="tabs-navigation">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`tab-nav-item ${activeTab === tab.id ? 'active' : ''}`}
+              onClick={() => handleTabClick(tab.id)}
+            >
+              <div className="tab-nav-content">
+                <div className="tab-number">{tab.number}</div>
+                <div className="tab-text-content">
+                  <h6>{tab.title}</h6>
+                  <small>{tab.subtitle}</small>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <div className="tabs-content-area">
+          {tabs.map((tab) => (
+            <div
+              key={tab.id}
+              className={`tab-pane-custom ${activeTab === tab.id ? 'active' : ''}`}
+              id={tab.id}
+            >
+              <div className="content-wrapper">
+                <div className="col-image">
+                  <div className="feature-display-card">
+                    <div className="card-visual">
+                      <div className="animation-layer">
+                        {renderAnimation(tab.animationType)}
+                      </div>
+                    </div>
+                    <h3 className="card-title">{tab.cardTitle}</h3>
+                    <p className="card-description">{tab.cardDescription}</p>
+                  </div>
+                </div>
+                <div className="col-services">
+                  <div className="services-list-wrapper">
+                    {tab.services.map((service, index) => (
+                      <div
+                        key={index}
+                        className={`service-card ${activeServiceCard === index && activeTab === tab.id ? 'active' : ''}`}
+                        onClick={() => handleServiceCardClick(index)}
+                      >
+                        <div className="service-text">
+                          <h3 className="service-title">{service.title}</h3>
+                          <p className="service-description">{service.description}</p>
                         </div>
                       </div>
+                    ))}
+                    <div className="learn-more-wrapper">
+                      <button className="learn-more-btn">
+                        {tab.learnMoreText} <i className="fas fa-arrow-right"></i>
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

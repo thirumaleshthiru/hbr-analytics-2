@@ -1,9 +1,10 @@
 import HeroSection from '../components/HeroSection';
 import TabsSection from '../components/TabsSection';
-import FeatureCards from '../components/FeatureCards';
+ 
 import ServicesSection from '../components/ServicesSection';
 import WhyChooseUsSection from '../components/WhyChooseUsSection';
 import SolutionsSection from '../components/SolutionsSection';
+import Testimonials from '../components/Testimonials';
 import IndustriesSection from '../components/IndustriesSection';
 import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
@@ -16,13 +17,11 @@ function Home() {
           <div className="relative w-full overflow-hidden" style={{ background: 'var(--bg-color)' }}>
             <HeroSection />
           </div>
-        
-          <FeatureCards />
-          <TabsSection />
-          <ServicesSection />
           <WhyChooseUsSection />
+          <ServicesSection />
+          <TabsSection />
           <SolutionsSection />
-      
+          <Testimonials />
           <IndustriesSection />
           <CTASection />
         </main>

@@ -1,79 +1,91 @@
-import './IndustriesSection.css';
+ 
 
 const IndustriesSection = () => {
-  // First row industries
-  const row1Industries = [
-    { icon: 'fa-industry', name: 'Manufacturing' },
-    { icon: 'fa-shopping-cart', name: 'Retail' },
-    { icon: 'fa-heartbeat', name: 'Healthcare' },
-    { icon: 'fa-university', name: 'Finance' },
-    { icon: 'fa-truck', name: 'Logistics' },
-    { icon: 'fa-graduation-cap', name: 'Education' },
-    { icon: 'fa-bolt', name: 'Energy' },
-    { icon: 'fa-home', name: 'Real Estate' },
-    { icon: 'fa-utensils', name: 'Hospitality' },
-    { icon: 'fa-film', name: 'Media' },
-  ];
-
-  // Second row industries
-  const row2Industries = [
-    { icon: 'fa-car', name: 'Automotive' },
-    { icon: 'fa-wifi', name: 'Telecom' },
-    { icon: 'fa-flask', name: 'Pharmaceuticals' },
-    { icon: 'fa-cube', name: 'E-commerce' },
-    { icon: 'fa-ship', name: 'Shipping' },
-    { icon: 'fa-building', name: 'Construction' },
-    { icon: 'fa-seedling', name: 'Agriculture' },
-    { icon: 'fa-plane', name: 'Aviation' },
-    { icon: 'fa-cogs', name: 'Technology' },
-    { icon: 'fa-mobile-alt', name: 'Telecommunications' },
-  ];
-
   return (
-    <section className="industries-section" id="industries">
-      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-black md:text-4xl lg:text-5xl mb-4" style={{ color: 'var(--text-primary)' }}>
-              Industries We Serve
-            </h2>
+    <section className="industries-section tech-bg-dots" id="industries">
+      <div className="common-container">
+        <div className="industries-unified-card">
+          <div className="industries-content">
+            <div className="industries-badge">Industries</div>
+            <h2 className="industries-heading">Industries We Serve</h2>
+            <p className="industries-description">
+              Delivering specialized analytics solutions across diverse sectors, empowering businesses with
+              data-driven insights tailored to their unique industry challenges.
+            </p>
+            <a href="#" className="industries-cta"><span>Explore Solutions</span><i
+              className="fas fa-arrow-right"></i></a>
           </div>
-
-          <div className="industries-scroll-wrapper">
-            <div className="industries-row row-1">
-              {/* Original items */}
-              {row1Industries.map((industry, index) => (
-                <div key={`row1-${index}`} className="industry-card">
-                  <i className={`industry-icon fas ${industry.icon}`}></i>
-                  <h3 className="industry-name">{industry.name}</h3>
+          <div className="industries-cards-section">
+            <div className="scrolling-box-frame">
+              <div className="scrolling-inner-mask">
+                <div className="industries-cards-container">
+                  <div className="industries-cards-wrapper">
+                    <div className="industries-column industries-column-scroll">
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-shopping-cart scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Retail</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-heartbeat scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Healthcare</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-university scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Finance</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-industry scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Manufacturing</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-bolt scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Energy</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-pills scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Pharmaceuticals</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-car scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Automotive</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-building scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Real Estate</h3>
+                      </div>
+                      {/* Duplicates for Scroll Loop */}
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-shopping-cart scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Retail</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-heartbeat scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Healthcare</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-university scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Finance</h3>
+                      </div>
+                      <div className="scrolling-card">
+                        <div className="scrolling-icon-wrapper"><i
+                          className="fas fa-industry scrolling-icon"></i></div>
+                        <h3 className="scrolling-name">Manufacturing</h3>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              ))}
-              {/* Duplicate for seamless loop */}
-              {row1Industries.map((industry, index) => (
-                <div key={`row1-dup-${index}`} className="industry-card">
-                  <i className={`industry-icon fas ${industry.icon}`}></i>
-                  <h3 className="industry-name">{industry.name}</h3>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="industries-scroll-wrapper">
-            <div className="industries-row row-2">
-              {/* Duplicate for seamless right scrolling (placed first) */}
-              {row2Industries.map((industry, index) => (
-                <div key={`row2-dup-${index}`} className="industry-card">
-                  <i className={`industry-icon fas ${industry.icon}`}></i>
-                  <h3 className="industry-name">{industry.name}</h3>
-                </div>
-              ))}
-              {/* Original content */}
-              {row2Industries.map((industry, index) => (
-                <div key={`row2-${index}`} className="industry-card">
-                  <i className={`industry-icon fas ${industry.icon}`}></i>
-                  <h3 className="industry-name">{industry.name}</h3>
-                </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
@@ -83,4 +95,3 @@ const IndustriesSection = () => {
 };
 
 export default IndustriesSection;
-

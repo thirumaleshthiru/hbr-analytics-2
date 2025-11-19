@@ -1,190 +1,259 @@
-/* Why Choose Us Section - Full width with blue gradient background */
-.why-choose-section {
-  width: 100%;
-  margin: 0;
-  padding: 100px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  background: linear-gradient(to bottom right, #2563EB, #1E40AF);
-  position: relative;
+/* Why Choose Us Section - Matches g5.html styles exactly */
+
+/* Tailwind utility classes converted to CSS */
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
-[data-theme="dark"] .why-choose-section {
-  background: linear-gradient(to bottom right, #1e40af, #1e3a8a) !important;
-}
-
-.section-header {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.section-badge {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #ffffff;
-  margin-bottom: 16px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.section-badge i {
-  color: #ffffff;
-  font-size: 14px;
-}
-
-.section-badge span {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-.section-title {
-  font-size: 48px;
+.font-bold {
   font-weight: 700;
-  color: #ffffff !important;
-  margin-bottom: 20px;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
 }
 
-.section-description {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.7;
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
-.why-choose-grid {
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.h-32 {
+  height: 8rem; /* 128px */
+}
+
+.w-full {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
-  padding: 0 40px;
 }
 
-.why-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  padding: 36px;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
+.h-full {
+  height: 100%;
 }
 
-.why-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-.why-icon {
-  width: 64px;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
+.flex {
   display: flex;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-center {
   align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
+}
+
+.space-x-3 > * + * {
+  margin-left: 0.75rem;
+}
+
+.bg-blue-100 {
+  background-color: #dbeafe;
+}
+
+.bg-blue-200 {
+  background-color: #bfdbfe;
+}
+
+.bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.rounded-t-md {
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+
+.relative {
   position: relative;
-  z-index: 1;
 }
 
-.why-icon i {
-  font-size: 28px;
-  color: #ffffff;
+.mt-4 {
+  margin-top: 1rem;
 }
 
-.why-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 1;
+.absolute {
+  position: absolute;
 }
 
-.why-description {
-  font-size: 15px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
+.left-0 {
+  left: 0;
 }
 
-.why-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: relative;
-  z-index: 1;
+.top-0 {
+  top: 0;
 }
 
-.why-features li {
-  padding: 6px 0;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.right-0 {
+  right: 0;
 }
 
-.why-features li i {
-  color: #ffffff;
-  font-size: 12px;
+.bottom-2 {
+  bottom: 0.5rem;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .why-choose-section {
-    padding: 80px 24px;
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-slate-100 {
+  border-color: #f1f5f9;
+}
+
+.text-green-500 {
+  color: #10b981;
+}
+
+.text-blue-500 {
+  color: #3b82f6;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
+/* Bar styles */
+.bar {
+  width: 100%;
+  border-radius: 0.375rem 0.375rem 0 0;
+  transform-origin: bottom;
+}
+
+.bar.bg-blue-100 {
+  background-color: #dbeafe;
+}
+
+.bar.bg-blue-200 {
+  background-color: #bfdbfe;
+}
+
+.bar.bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+/* Animation Keyframes - matching g5.html exactly */
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 1000;
   }
-
-  .why-choose-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    padding: 0 24px;
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
-@media (max-width: 768px) {
-  .why-choose-section {
-    padding: 60px 24px;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
   }
-
-  .section-header {
-    margin-bottom: 40px;
-  }
-
-  .section-title {
-    font-size: 32px;
-  }
-
-  .section-description {
-    font-size: 16px;
-  }
-
-  .why-choose-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0;
-  }
-
-  .why-card {
-    padding: 28px 20px;
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
   }
 }
 
+@keyframes grow-bar {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation Classes - matching g5.html exactly */
+.animated-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-line 2s ease-out 0.5s forwards;
+}
+
+.animated-dot {
+  animation: pulse 2s infinite;
+  opacity: 1;
+}
+
+.animated-dot-delay-1 {
+  animation-delay: 0.5s;
+}
+
+.animated-dot-delay-2 {
+  animation-delay: 1s;
+}
+
+/* Ensure the SVG container displays properly */
+.h-32 svg {
+  display: block;
+}
+
+/* Make sure bars animate properly */
+.bar.animate-grow-bar {
+  animation: grow-bar 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+/* Analytics badges animation */
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}

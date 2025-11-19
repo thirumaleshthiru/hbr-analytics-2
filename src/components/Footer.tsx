@@ -1,91 +1,52 @@
-import './Footer.css';
+ 
 
 const Footer = () => {
-    const year = new Date().getFullYear();
-    
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const year = new Date().getFullYear();
 
   return (
-    <footer 
-      className="footer py-6 px-6 md:py-8 md:px-10 border-t border-gray-200"
-      style={{ background: 'var(--bg-color)', borderColor: 'var(--card-border)' }}
-    >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
-        <div className="logo-text whitespace-nowrap" style={{ fontSize: '18px' }}>
-          HBR Analytics
+    <footer className="site-footer">
+      <div className="footer-container">
+        <div className="footer-brand">
+          <a href="#" className="logo-area" style={{ color: 'white' }}>
+            <span className="logo-text" style={{ color: 'white' }}>HBR Analytics</span>
+          </a>
+          <p>Empowering enterprises with cutting-edge analytics, AI-driven insights, and robust risk management
+            solutions.</p>
         </div>
-        <div className="flex gap-4 md:gap-6 items-center flex-wrap flex-1 justify-center order-3 md:order-2">
-          <a 
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('home');
-            }}
-            className="text-sm text-gray-600 hover:text-primary transition-colors whitespace-nowrap"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Home
-          </a>
-          <a 
-            href="#services"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('services');
-            }}
-            className="text-sm text-gray-600 hover:text-primary transition-colors whitespace-nowrap"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Services
-          </a>
-          <a 
-            href="#why-choose"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('why-choose');
-            }}
-            className="text-sm text-gray-600 hover:text-primary transition-colors whitespace-nowrap"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Why Choose Us
-          </a>
-          <a 
-            href="#industries"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('industries');
-            }}
-            className="text-sm text-gray-600 hover:text-primary transition-colors whitespace-nowrap"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Industries
-          </a>
-          <a 
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('contact');
-            }}
-            className="text-sm text-gray-600 hover:text-primary transition-colors whitespace-nowrap"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            Contact
-          </a>
+        <div className="footer-col">
+          <h4 className="footer-heading">Quick Links</h4>
+          <ul className="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+          </ul>
         </div>
-        <p 
-          className="text-sm text-gray-600 whitespace-nowrap order-2 md:order-3 text-center md:text-left"
-          style={{ color: 'var(--text-secondary)' }}
-        >
-          © {year} HBR Analytics. All rights reserved.
-        </p>
+        <div className="footer-col">
+          <h4 className="footer-heading">Contact Us</h4>
+          <div className="footer-contact-item"><i className="fas fa-map-marker-alt"></i><span>123 Analytics Blvd,
+              NY</span></div>
+          <div className="footer-contact-item"><i className="fas fa-envelope"></i><span>contact@hbranalytics.com</span>
+          </div>
+          <div className="footer-contact-item"><i className="fas fa-phone"></i><span>+1 (555) 123-4567</span></div>
+        </div>
+        <div className="footer-col">
+          <h4 className="footer-heading">Follow Us</h4>
+          <div className="social-links">
+            <a href="#" className="social-btn"><i className="fab fa-linkedin-in"></i></a>
+            <a href="#" className="social-btn"><i className="fab fa-twitter"></i></a>
+            <a href="#" className="social-btn"><i className="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+      <div className="copyright-bar">
+        <div className="copyright-content">
+          <span style={{ color: 'rgba(255,255,255,0.6)' }}>© {year} HBR Analytics. All rights reserved.</span>
+          <span className="credit-text">Designed & Developed by <a href="#" target="_blank" rel="noopener noreferrer">supernexsys</a></span>
+        </div>
       </div>
     </footer>
   );
 };
 
 export default Footer;
-
