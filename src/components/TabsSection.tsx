@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 const TabsSection = () => {
   const [activeTab, setActiveTab] = useState('tab1');
 
-  // Tab data matching g5.html
   const tabs = [
     {
       id: 'tab1',
@@ -28,7 +27,7 @@ const TabsSection = () => {
         }
       ],
       learnMoreText: 'Explore BI Solutions',
-      animationType: 'bi' // Business Intelligence
+      animationType: 'bi'
     },
     {
       id: 'tab2',
@@ -52,7 +51,7 @@ const TabsSection = () => {
         }
       ],
       learnMoreText: 'Explore SAP Services',
-      animationType: 'sap' // SAP & Cloud
+      animationType: 'sap'
     },
     {
       id: 'tab3',
@@ -76,7 +75,7 @@ const TabsSection = () => {
         }
       ],
       learnMoreText: 'Explore AI Solutions',
-      animationType: 'ai' // AI & ML
+      animationType: 'ai'
     },
     {
       id: 'tab4',
@@ -100,26 +99,76 @@ const TabsSection = () => {
         }
       ],
       learnMoreText: 'Explore Risk Solutions',
-      animationType: 'risk' // Quantitative Risk
+      animationType: 'risk'
     }
   ];
 
   const [activeServiceCard, setActiveServiceCard] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Reset active service card when tab changes
   useEffect(() => {
     setActiveServiceCard(0);
   }, [activeTab]);
 
+  useEffect(() => {
+    if (isPaused || isTransitioning) return;
+
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      
+      setTimeout(() => {
+        setActiveTab((currentTab) => {
+          const currentIndex = tabs.findIndex(tab => tab.id === currentTab);
+          const nextIndex = (currentIndex + 1) % tabs.length;
+          return tabs[nextIndex].id;
+        });
+        
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 300);
+      }, 300);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isPaused, isTransitioning]);
+
   const handleTabClick = (tabId: string) => {
-    setActiveTab(tabId);
+    if (tabId === activeTab) return;
+    
+    setIsTransitioning(true);
+    setIsPaused(true);
+    
+    setTimeout(() => {
+      setActiveTab(tabId);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 300);
+    }, 300);
+
+    setTimeout(() => {
+      setIsPaused(false);
+    }, 10000);
+
+    setTimeout(() => {
+      const tabsNavigation = document.querySelector('.tabs-navigation');
+      if (tabsNavigation) {
+        const headerOffset = 100;
+        const elementPosition = tabsNavigation.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   const handleServiceCardClick = (index: number) => {
     setActiveServiceCard(index);
   };
 
-  // Render animation based on tab type
   const renderAnimation = (type: string) => {
     switch (type) {
       case 'bi':
@@ -252,7 +301,11 @@ const TabsSection = () => {
           </p>
         </div>
 
-        <div className="tabs-navigation">
+        <div 
+          className="tabs-navigation"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -274,7 +327,7 @@ const TabsSection = () => {
           {tabs.map((tab) => (
             <div
               key={tab.id}
-              className={`tab-pane-custom ${activeTab === tab.id ? 'active' : ''}`}
+              className={`tab-pane-custom ${activeTab === tab.id ? 'active' : ''} ${isTransitioning ? 'transitioning' : ''}`}
               id={tab.id}
             >
               <div className="content-wrapper">

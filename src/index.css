@@ -1195,7 +1195,12 @@ body {
 .tab-pane-custom {
     display: none;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tab-pane-custom.transitioning {
+    opacity: 0;
+    transform: translateY(10px);
 }
 
 .tab-pane-custom.active {
